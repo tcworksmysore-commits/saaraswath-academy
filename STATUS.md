@@ -138,6 +138,18 @@ Academy to-dos (Apps Script URL, domain, GBP, reviews, photos, hours, batch date
 - Not done (next): navbar/footer logo still loads the 98 KB `academy-logo-tight.webp` at 44px (make a 96px version); inner-page
   heroes do not preload their photo yet.
 
+## Phase 5b-order done (2026-11-25, commit 86abfe3)
+User: "the teachers should come after the students... then the courses". User choices: founder + all 10 teachers; Home only
+(course landings unchanged); merge the academy videos/photos/YouTube into one section.
+- Home order now: hero -> exam tiles -> results (`ResultsStrip`, cards untouched) -> **Your teachers** -> courses -> why Saaraswath
+  -> call-back card -> inside the academy (2 videos + photo strip + gallery/YouTube/Telegram buttons) -> articles -> FAQ -> CTA band.
+- New `Teachers` in Visual.jsx (CSS `.mentor`, `.tgrid`, `.tcard` in polish.css): large founder "Your mentor" card (photo, title,
+  existing experience + bio lines, call-back button) + "Subject teachers" portrait cards (name, subject, role; no years), 2 per row on
+  phones, 5 on desktop. The old founder section, `FacultyRow` strip on Home and the big YouTube player block are gone (`FacultyRow`
+  is still used on course landings).
+- `images/faculty/sri-sandhya-g-s.webp`: bottom 15% cropped to remove a passport name/date stamp (shows on /faculty too).
+- Checked 375 + 1280 on the built site: no console errors, no horizontal scroll.
+
 ## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
 - /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
