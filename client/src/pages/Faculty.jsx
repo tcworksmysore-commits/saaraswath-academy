@@ -2,6 +2,7 @@ import React from 'react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
 import { PageHero, CtaBand } from '../components/common/Blocks';
+import { PHOTOS } from '../components/common/Visual';
 import { ACADEMY_INFO, INITIAL_FACULTY } from '../utils/constants';
 
 export const Faculty = () => (
@@ -11,7 +12,7 @@ export const Faculty = () => (
       description={`Meet the faculty of Saaraswath IAS/KAS Academy, Mysuru: ${ACADEMY_INFO.founder} and subject teachers for history, polity, geography, economy, current affairs and CSAT.`}
       crumbs={[['Faculty', '/faculty']]}
     />
-    <PageHero crumbs={[['Faculty']]} title="Our faculty" text="Subject teachers who teach in Kannada and English, led by the founder." />
+    <PageHero photo={PHOTOS.seminar} crumbs={[['Faculty']]} title="Our faculty" text="Subject teachers who teach in Kannada and English, led by the founder." />
     <section className="sec">
       <div className="wrap">
         <div className="card fac fac-lead">

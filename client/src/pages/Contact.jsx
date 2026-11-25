@@ -4,17 +4,14 @@ import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
 import { LeadForm } from '../components/common/LeadForm';
 import { BrandIcon, Socials } from '../components/common/Brand';
+import { PageHero } from '../components/common/Blocks';
+import { PHOTOS } from '../components/common/Visual';
 import { ACADEMY_INFO, getWhatsAppLink, telLink } from '../utils/constants';
 
 export const Contact = () => (
   <PageLayout>
     <SEO title="Contact Saaraswath IAS/KAS Academy, Mysuru" description={`Call ${ACADEMY_INFO.phoneNumbers.join(', ')} or visit us at ${ACADEMY_INFO.address}.`} />
-    <section className="page-hero">
-      <div className="wrap">
-        <h1>Contact us</h1>
-        <p>Call, WhatsApp or visit our centre in Kuvempunagar, Mysuru. Or leave your number and we will call you back.</p>
-      </div>
-    </section>
+    <PageHero photo={PHOTOS.front} crumbs={[['Contact']]} title="Contact us" text="Call, WhatsApp or visit our centre in Kuvempunagar, Mysuru. Or leave your number and we will call you back." />
     <section className="sec">
       <div className="wrap contact-grid">
         <div className="card">

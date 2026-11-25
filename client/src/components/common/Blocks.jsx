@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { openEnquiry } from './Enquire';
 import { BrandIcon } from './Brand';
+import { Photo } from './Visual';
 import { getWhatsAppLink } from '../../utils/constants';
 
 // Small building blocks shared by the inner pages (styles in styles/site.css).
@@ -16,13 +17,20 @@ export const Crumbs = ({ items }) => (
   </nav>
 );
 
-export const PageHero = ({ title, text, crumbs, kn }) => (
-  <section className="page-hero">
+// photo: one of PHOTOS from Visual.jsx; shown as a framed, tilted card beside the title.
+export const PageHero = ({ title, text, crumbs, kn, photo, children }) => (
+  <section className={`page-hero${photo ? ' ph-photo' : ''}`}>
+    <span className="blob b1" aria-hidden="true" /><span className="blob b2" aria-hidden="true" />
     <div className="wrap">
-      {crumbs && <Crumbs items={crumbs} />}
-      <h1>{title}</h1>
-      {kn && <p className="kn">{kn}</p>}
-      {text && <p>{text}</p>}
+      <div className="ph-text rise">
+        {crumbs && <Crumbs items={crumbs} />}
+        <h1>{title}</h1>
+        <span className="orn" aria-hidden="true" />
+        {kn && <p className="kn">{kn}</p>}
+        {text && <p>{text}</p>}
+        {children}
+      </div>
+      {photo && <figure className="frame ph-pic rise d1"><Photo p={photo} eager sizes="(min-width: 900px) 440px, 80vw" /></figure>}
     </div>
   </section>
 );

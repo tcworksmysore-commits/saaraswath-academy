@@ -6,6 +6,7 @@ import { SEO, articleLd } from '../components/common/SEO';
 import { LeadForm } from '../components/common/LeadForm';
 import { Markdown } from '../components/common/Markdown';
 import { PageHero, Crumbs, CtaBand } from '../components/common/Blocks';
+import { PHOTOS } from '../components/common/Visual';
 import { sortedArticles, articleBySlug } from '../data/articles';
 import { LANDINGS } from '../data/courses';
 import NotFound from './NotFound';
@@ -31,7 +32,7 @@ export const Articles = () => {
         description="UPSC, KPSC KAS and Karnataka PSI exam updates, dates, syllabus and simple strategy guides from Saaraswath IAS/KAS Academy, Mysuru."
         crumbs={[['Articles', '/articles']]}
       />
-      <PageHero crumbs={[['Articles']]} title="Exam updates and guides" text="Dates, syllabus and simple strategy for UPSC, KAS and PSI aspirants. We check facts against the official notifications." />
+      <PageHero photo={PHOTOS.studyHall} crumbs={[['Articles']]} title="Exam updates and guides" text="Dates, syllabus and simple strategy for UPSC, KAS and PSI aspirants. We check facts against the official notifications." />
       <section className="sec">
         <div className="wrap">
           <div className="grid g3">{list.map(a => <Card key={a.slug} a={a} />)}</div>

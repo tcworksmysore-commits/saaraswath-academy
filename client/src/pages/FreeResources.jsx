@@ -4,6 +4,7 @@ import { ExternalLink, ArrowRight } from 'lucide-react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
 import { PageHero, SecHead, CtaBand } from '../components/common/Blocks';
+import { PHOTOS } from '../components/common/Visual';
 import { BrandIcon } from '../components/common/Brand';
 import { ACADEMY_INFO } from '../utils/constants';
 import { sortedArticles } from '../data/articles';
@@ -26,7 +27,7 @@ export const FreeResources = () => (
       canonical="/free-resources"
       crumbs={[['Free resources', '/free-resources']]}
     />
-    <PageHero crumbs={[['Free resources']]} title="Free resources" text="Official sources for previous papers, syllabus and books. Always download papers from the official websites." />
+    <PageHero photo={PHOTOS.readingHall} crumbs={[['Free resources']]} title="Free resources" text="Official sources for previous papers, syllabus and books. Always download papers from the official websites." />
     <section className="sec">
       <div className="wrap">
         <div className="grid g3">

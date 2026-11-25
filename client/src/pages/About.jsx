@@ -5,6 +5,7 @@ import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
 import { openEnquiry } from '../components/common/Enquire';
 import { PageHero, SecHead, CtaBand } from '../components/common/Blocks';
+import { PHOTOS } from '../components/common/Visual';
 import { ACADEMY_INFO } from '../utils/constants';
 
 const VALUES = [
@@ -21,7 +22,7 @@ export const About = () => (
       description="Saaraswath IAS/KAS Academy in Kuvempunagar, Mysuru was started in 2019 by Dr. Vasanth Kumar N to offer careful, personal coaching for UPSC, KAS and PSI aspirants."
       crumbs={[['About', '/about']]}
     />
-    <PageHero crumbs={[['About']]} title="About Saaraswath Academy" text="A civil services academy in Kuvempunagar, Mysuru, started in 2019." />
+    <PageHero photo={PHOTOS.front} crumbs={[['About']]} title="About Saaraswath Academy" text="A civil services academy in Kuvempunagar, Mysuru, started in 2019." />
 
     <section className="sec">
       <div className="wrap split">
@@ -43,8 +44,8 @@ export const About = () => (
     </section>
 
     <section className="sec sec-cream">
-      <div className="wrap founder">
-        <img src={ACADEMY_INFO.founderPhoto} alt={ACADEMY_INFO.founder} loading="lazy" decoding="async" width="420" height="525" />
+      <div className="wrap founder founder-x">
+        <figure className="frame f-portrait"><img src={ACADEMY_INFO.founderPhoto} alt={ACADEMY_INFO.founder} loading="lazy" decoding="async" width="420" height="420" /></figure>
         <div>
           <span className="sh" style={{ margin: 0, textAlign: 'left' }}><span className="tag">Founder</span></span>
           <h2>{ACADEMY_INFO.founder}</h2>
@@ -61,7 +62,7 @@ export const About = () => (
       <div className="wrap">
         <SecHead tag="How we teach" title="What we care about" />
         <div className="grid g4">
-          {VALUES.map(([Icon, t, d]) => <div key={t} className="card feat"><span className="ic"><Icon size={22} /></span><div><h3>{t}</h3><p>{d}</p></div></div>)}
+          {VALUES.map(([Icon, t, d], i) => <div key={t} className={`card feat feat-x c${i % 3}`}><span className="ic"><Icon size={22} /></span><div><h3>{t}</h3><p>{d}</p></div></div>)}
         </div>
       </div>
     </section>

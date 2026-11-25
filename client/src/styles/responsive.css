@@ -27,8 +27,8 @@
 html,
 body,
 #root {
-  max-width: 100vw;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: clip; /* clip (not hidden) keeps the sticky header working */
   position: relative;
 }
 

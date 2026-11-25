@@ -7,6 +7,7 @@ import { LeadForm } from '../components/common/LeadForm';
 import { openEnquiry } from '../components/common/Enquire';
 import { BrandIcon } from '../components/common/Brand';
 import { PageHero } from '../components/common/Blocks';
+import { PHOTOS, Timeline } from '../components/common/Visual';
 import { ACADEMY_INFO, getWhatsAppLink, telLink } from '../utils/constants';
 
 const STEPS = [
@@ -25,7 +26,7 @@ export const Admissions = () => {
         description="How to join Saaraswath IAS/KAS Academy, Mysuru: free counselling, batch selection, registration. UPSC, KAS, PSI/PC and degree foundation batches."
         crumbs={[['Admissions', '/admissions']]}
       />
-      <PageHero crumbs={[['Admissions']]} title="Admissions" text="Joining takes four simple steps. It starts with a free conversation." />
+      <PageHero photo={PHOTOS.classroomB} crumbs={[['Admissions']]} title="Admissions" text="Joining takes four simple steps. It starts with a free conversation." />
       <section className="sec">
         <div className="wrap contact-grid">
           <div className="lead-card">
@@ -33,7 +34,7 @@ export const Admissions = () => {
           </div>
           <div>
             <div className="steps">
-              {STEPS.map(([t, d], i) => <div key={t} className="card step"><b>{i + 1}</b><div><h2 className="h3">{t}</h2><p>{d}</p></div></div>)}
+              <Timeline items={STEPS} vertical as="h2" />
             </div>
             <div className="card" style={{ marginTop: 16 }}>
               <div className="info-row"><span className="ic"><Phone size={20} /></span><div>{ACADEMY_INFO.phoneNumbers.map(n => <div key={n}><a href={telLink(n)}>+91 {n}</a></div>)}</div></div>

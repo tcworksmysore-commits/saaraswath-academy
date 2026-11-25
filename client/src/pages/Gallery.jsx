@@ -3,6 +3,7 @@ import { X } from 'lucide-react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
 import { PageHero, CtaBand } from '../components/common/Blocks';
+import { PHOTOS } from '../components/common/Visual';
 import { INITIAL_GALLERY } from '../utils/constants';
 
 const CATS = ['All', 'Classroom', 'Workshops', 'Achievements', 'Students'];
@@ -20,7 +21,7 @@ export const Gallery = () => {
   return (
     <PageLayout>
       <SEO title="Gallery" description="Classrooms, workshops and felicitations at Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru." crumbs={[['Gallery', '/gallery']]} />
-      <PageHero crumbs={[['Gallery']]} title="Gallery" text="Classes, workshops and student felicitations at the academy." />
+      <PageHero photo={PHOTOS.group} crumbs={[['Gallery']]} title="Gallery" text="Classes, workshops and student felicitations at the academy." />
       <section className="sec">
         <div className="wrap">
           <div className="chips" style={{ justifyContent: 'center', marginBottom: 20 }}>

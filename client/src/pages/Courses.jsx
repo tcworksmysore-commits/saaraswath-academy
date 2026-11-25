@@ -5,6 +5,7 @@ import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
 import { openEnquiry } from '../components/common/Enquire';
 import { PageHero, CtaBand } from '../components/common/Blocks';
+import { PHOTOS } from '../components/common/Visual';
 import { INITIAL_COURSES } from '../utils/constants';
 import { landingByCourseId } from '../data/courses';
 
@@ -15,7 +16,7 @@ export const Courses = () => (
       description="Courses at Saaraswath IAS/KAS Academy, Mysuru: UPSC Civil Services, KPSC KAS, Karnataka PSI/PC, a 3-year degree foundation and Kannada Literature optional."
       crumbs={[['Courses', '/courses']]}
     />
-    <PageHero crumbs={[['Courses']]} title="Courses" text="Choose the course that fits your exam and your stage of preparation. Ask us for fees and the next batch date." />
+    <PageHero photo={PHOTOS.classroomA} crumbs={[['Courses']]} title="Courses" text="Choose the course that fits your exam and your stage of preparation. Ask us for fees and the next batch date." />
     <section className="sec">
       <div className="wrap">
         <div className="grid g3">

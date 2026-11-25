@@ -8,6 +8,7 @@ import { landingByCourseId } from '../data/courses';
 import { LeadForm } from '../components/common/LeadForm';
 import { openEnquiry } from '../components/common/Enquire';
 import { BrandIcon } from '../components/common/Brand';
+import { PhotoStack, PHOTOS, FacultyRow, GalleryStrip, MoreLink } from '../components/common/Visual';
 import { ACADEMY_INFO, INITIAL_COURSES, INITIAL_ACHIEVERS, getWhatsAppLink, telLink } from '../utils/constants';
 
 const YT_UPLOADS = 'UUOMaPN30n6XB7h34Kac75oA'; // uploads playlist of @Saaraswath.Mysore
@@ -56,14 +57,16 @@ export const Home = () => (
     />
 
     {/* Hero with the enquiry form above the fold */}
-    <section className="hero">
-      <div className="wrap hg">
-        <div className="hg-intro">
+    <section className="hero hero-lp">
+      <span className="blob b1" aria-hidden="true" /><span className="blob b2" aria-hidden="true" />
+      <div className="wrap hg hg-lp">
+        <div className="hg-intro rise">
           <span className="pill"><i /> Admissions open · New batches in Mysuru</span>
           <h1>IAS &amp; KAS coaching in Mysuru, <em>with a mentor who knows you.</em></h1>
           <p className="kn">ನಿಮ್ಮ ಐಎಎಸ್ / ಕೆಎಎಸ್ ಕನಸಿಗೆ ಸರಿಯಾದ ಮಾರ್ಗದರ್ಶನ</p>
           <p className="lead">UPSC, KPSC KAS and PSI coaching with personal mentorship by {ACADEMY_INFO.founder}, weekly answer evaluation and bilingual classes.</p>
         </div>
+        <div className="hg-photo rise d1"><PhotoStack photo={PHOTOS.front} tag="Panchamantra Road, Kuvempunagar" eager /></div>
         <div className="hg-extra">
           <ul className="ticks">
             <li><CheckCircle2 size={20} /> Free counselling call before you join</li>
@@ -80,7 +83,7 @@ export const Home = () => (
             <div><b>10+</b><span>Expert faculty</span></div>
           </div>
         </div>
-        <div className="lead-card hg-form" id="enquire">
+        <div className="lead-card hg-form rise d2" id="enquire">
           <LeadForm title="Book your free counselling" subtitle="Get course, batch and fee details. We call you back." formName="hero" />
         </div>
       </div>
@@ -96,7 +99,7 @@ export const Home = () => (
         </div>
         <div className="grid g3">
           {INITIAL_COURSES.map(c => (
-            <article key={c.id} className="card course">
+            <article key={c.id} className="card course course-x rv">
               <div className="top"><span className="cat">{c.category}</span><span className="bdg">{c.badge}</span></div>
               <h3>{c.title}</h3>
               <p>{c.description}</p>
@@ -152,8 +155,8 @@ export const Home = () => (
           <h2>Serious preparation, personal attention</h2>
         </div>
         <div className="grid g3">
-          {FEATURES.map(([Icon, t, d]) => (
-            <div key={t} className="card feat"><span className="ic"><Icon size={22} /></span><div><h3>{t}</h3><p>{d}</p></div></div>
+          {FEATURES.map(([Icon, t, d], i) => (
+            <div key={t} className={`card feat feat-x rv c${i % 3}`}><span className="ic"><Icon size={22} /></span><div><h3>{t}</h3><p>{d}</p></div></div>
           ))}
         </div>
       </div>
@@ -161,8 +164,8 @@ export const Home = () => (
 
     {/* Founder */}
     <section className="sec sec-cream">
-      <div className="wrap founder">
-        <img src={ACADEMY_INFO.founderPhoto} alt={ACADEMY_INFO.founder} loading="lazy" decoding="async" width="420" height="525" />
+      <div className="wrap founder founder-x">
+        <figure className="frame f-portrait rv"><img src={ACADEMY_INFO.founderPhoto} alt={ACADEMY_INFO.founder} loading="lazy" decoding="async" width="420" height="420" /></figure>
         <div>
           <span className="sh" style={{ margin: 0, textAlign: 'left' }}><span className="tag">Meet the founder</span></span>
           <h2>{ACADEMY_INFO.founder}</h2>
@@ -174,6 +177,18 @@ export const Home = () => (
             <Link className="b b-line" to="/about">About the academy</Link>
           </div>
         </div>
+      </div>
+    </section>
+
+    {/* Team + place */}
+    <section className="sec sec-deco">
+      <div className="wrap">
+        <div className="sh"><span className="tag">The teaching team</span><h2>Teachers you will learn from</h2><p>Subject teachers for history, polity, geography, economy, science, current affairs and aptitude, with the founder as your mentor.</p></div>
+        <FacultyRow />
+        <MoreLink to="/faculty">Meet the faculty</MoreLink>
+        <div className="sh" style={{ marginTop: 56 }}><span className="tag">Inside the academy</span><h2>A quiet place to study in Mysuru</h2></div>
+        <GalleryStrip />
+        <MoreLink to="/gallery">Open the gallery</MoreLink>
       </div>
     </section>
 
@@ -199,7 +214,7 @@ export const Home = () => (
         <div className="sh"><span className="tag">Updates</span><h2>Exam updates and guides</h2><p>Dates, syllabus and simple strategy, checked against official notifications.</p></div>
         <div className="grid g3">
           {sortedArticles().slice(0, 3).map(a => (
-            <Link key={a.slug} to={`/articles/${a.slug}`} className="card art"><span className="cat">{a.category} · {a.exam}</span><h3>{a.title}</h3><p>{a.description}</p><span className="more">Read more</span></Link>
+            <Link key={a.slug} to={`/articles/${a.slug}`} className="card art rv"><span className="cat">{a.category} · {a.exam}</span><h3>{a.title}</h3><p>{a.description}</p><span className="more">Read more</span></Link>
           ))}
         </div>
         <p style={{ textAlign: 'center', marginTop: 16 }}><Link className="b b-line" to="/articles">All articles</Link></p>

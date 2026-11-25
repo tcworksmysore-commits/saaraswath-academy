@@ -6,6 +6,7 @@ import './styles/global.css';
 import './styles/components.css';
 import './styles/responsive.css';
 import './styles/site.css';
+import './styles/polish.css';
 
 const basename = import.meta.env.BASE_URL || '/';
 const el = document.getElementById('root');

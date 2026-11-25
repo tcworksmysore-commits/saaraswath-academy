@@ -2,6 +2,7 @@ import React from 'react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
 import { PageHero, CtaBand } from '../components/common/Blocks';
+import { PHOTOS } from '../components/common/Visual';
 import { INITIAL_ACHIEVERS, INITIAL_GALLERY } from '../utils/constants';
 
 export const Achievements = () => (
@@ -11,7 +12,7 @@ export const Achievements = () => (
       description="Students of Saaraswath IAS/KAS Academy, Mysuru selected in UPSC, PSI, CAR and teacher recruitment, in their own words."
       crumbs={[['Results', '/achievements']]}
     />
-    <PageHero crumbs={[['Results']]} title="Our students in service" text="Students who prepared with us in Mysuru, in their own words. We are grateful to have been part of their journey." />
+    <PageHero photo={PHOTOS.stage} crumbs={[['Results']]} title="Our students in service" text="Students who prepared with us in Mysuru, in their own words. We are grateful to have been part of their journey." />
     <section className="sec">
       <div className="wrap">
         <div className="grid g3">
