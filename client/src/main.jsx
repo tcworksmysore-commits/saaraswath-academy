@@ -8,17 +8,15 @@ import './styles/responsive.css';
 import './styles/site.css';
 
 const basename = import.meta.env.BASE_URL || '/';
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+const el = document.getElementById('root');
+const app = (
   <React.StrictMode>
-    <BrowserRouter
-      basename={basename}
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true,
-      }}
-    >
+    <BrowserRouter basename={basename} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
 );
+
+// Pages are pre-rendered to static HTML at build time; hydrate them, or render fresh in dev.
+if (el.hasChildNodes()) ReactDOM.hydrateRoot(el, app);
+else ReactDOM.createRoot(el).render(app);
