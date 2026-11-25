@@ -175,7 +175,7 @@ export const FacultyRow = ({ items = INITIAL_FACULTY }) => (
       const file = f.image.split('/').pop();
       return (
         <figure key={f.id} className="av">
-          <img src={web(`av-${file}`)} alt={f.name} width="128" height="128" loading="lazy" decoding="async" />
+          <img src={web(`tc-${file}`)} alt={f.name} width="128" height="128" loading="lazy" decoding="async" />
           <figcaption><b>{f.name}</b><span>{f.specialization}</span></figcaption>
         </figure>
       );

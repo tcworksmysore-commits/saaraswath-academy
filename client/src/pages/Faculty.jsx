@@ -26,7 +26,7 @@ export const Faculty = () => (
         <div className="grid g3" style={{ marginTop: 16 }}>
           {INITIAL_FACULTY.map(f => (
             <article key={f.id} className="card fac">
-              <img src={f.image} alt={f.name} width="120" height="150" loading="lazy" decoding="async" />
+              <img src={f.image.replace('/images/faculty/', '/images/web/tc-')} alt={f.name} width="96" height="96" loading="lazy" decoding="async" />
               <div>
                 <h2 className="h3">{f.name}</h2>
                 <div className="spec">{f.specialization}</div>

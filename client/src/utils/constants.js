@@ -51,7 +51,7 @@ export const ACADEMY_INFO = {
   },
   mapsEmbed: "https://www.google.com/maps?q=Saaraswath+IAS+KAS+Academy,+Kuvempunagar,+Mysuru&output=embed",
   logoPath: getAssetUrl("/images/logo/academy-logo.webp"),
-  logoTight: getAssetUrl("/images/logo/academy-logo-tight.webp"),
+  logoTight: getAssetUrl("/images/logo/academy-logo-120.webp"), // 5 KB, 120px tall (shown at 44px); full file: academy-logo-tight.webp
   founderPhoto: getAssetUrl("/images/founder/dr-vasanth-kumar.webp"),
   brochurePath: getAssetUrl("/brochures/academy-brochure.pdf"),
   mapsUrl: "https://maps.app.goo.gl/HsmnvRnqMMPBs4c49",
