@@ -68,7 +68,7 @@ export const Article = () => {
           </div>
           <aside className="art-side">
             <div className="lead-card">
-              <LeadForm title="Have a question about your preparation?" subtitle="Talk to a mentor, free. We will call you back." formName={`article-${a.slug}`} />
+              <LeadForm title="Have a question about your preparation?" subtitle="A mentor calls you back. Free, no pressure." formName={`article-${a.slug}`} />
             </div>
             {course && <Link className="b b-line b-block" style={{ marginTop: 12 }} to={`/${course.slug}`}>{course.seoTitle.split(' | ')[0]}</Link>}
           </aside>

@@ -43,13 +43,13 @@ export const SecHead = ({ tag, title, text }) => (
   </div>
 );
 
-export const CtaBand = ({ title = 'Start with a free counselling call', text = 'Visit us at Kuvempunagar, Mysuru, or talk to us today. We will help you choose the right exam, course and batch.', course, form = 'cta-band', waMsg }) => (
+export const CtaBand = ({ title = 'Start with a short call', text = 'Visit us at Kuvempunagar, Mysuru, or talk to us today. We will help you choose the right exam, course and batch.', course, form = 'cta-band', waMsg }) => (
   <section className="sec">
     <div className="wrap">
       <div className="band">
         <div><h2>{title}</h2><p>{text}</p></div>
         <div className="acts">
-          <button className="b b-gold" onClick={() => openEnquiry({ course, form })}>Book free counselling</button>
+          <button className="b b-gold" onClick={() => openEnquiry({ course, form })}>Get a call back</button>
           <a className="b b-wa" href={getWhatsAppLink(waMsg)} target="_blank" rel="noopener noreferrer"><BrandIcon name="whatsapp" /> WhatsApp us</a>
         </div>
       </div>

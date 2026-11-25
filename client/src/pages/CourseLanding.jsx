@@ -11,13 +11,14 @@ import { LeadForm, COURSE_OPTIONS } from '../components/common/LeadForm';
 import { openEnquiry } from '../components/common/Enquire';
 import { BrandIcon } from '../components/common/Brand';
 import { Crumbs, SecHead, CtaBand, Faq, AchieverGrid } from '../components/common/Blocks';
-import { PhotoStack, PHOTOS, Timeline, Flow, FacultyRow, Testimonial, GalleryStrip, StickyCta, MoreLink, VideoPair, CallbackCard } from '../components/common/Visual';
+import { PhotoStack, HeroCtaM, PHOTOS, Timeline, Flow, FacultyRow, Testimonial, GalleryStrip, StickyCta, MoreLink, VideoPair, CallbackCard } from '../components/common/Visual';
 import { LANDINGS, landingBySlug, landingByCourseId } from '../data/courses';
 import { articleBySlug } from '../data/articles';
 import { ACADEMY_INFO, INITIAL_ACHIEVERS, getWhatsAppLink, telLink } from '../utils/constants';
 import NotFound from './NotFound';
 
 const OPTION = { UPSC: 0, KAS: 1, PSI: 2, Foundation: 3, Optional: 4 };
+const OG = { UPSC: 'ias', KAS: 'kas', PSI: 'psi', Foundation: 'foundation', Optional: 'optional' };
 const HERO_PHOTO = { UPSC: PHOTOS.readingHall, KAS: PHOTOS.classroomA, PSI: PHOTOS.studyHall, Foundation: PHOTOS.classroomB, Optional: PHOTOS.seminar };
 
 // A distinct icon for each "what you get" card, picked from its title.
@@ -66,6 +67,8 @@ export const CourseLanding = ({ slug }) => {
         canonical={path}
         crumbs={[['Courses', '/courses'], [l.short, path]]}
         jsonLd={[courseLd({ name: l.seoTitle.split(' | ')[0], description: l.description, path }), faqLd(l.faq)]}
+        image={OG[l.exam]}
+        preload={HERO_PHOTO[l.exam].k}
       />
       <StickyCta label={l.seoTitle.split(' | ')[0]} course={course} form={l.exam} />
 
@@ -78,10 +81,11 @@ export const CourseLanding = ({ slug }) => {
             <h1>{l.h1} <em>{l.h1em}</em></h1>
             <p className="kn">{l.kn}</p>
             <p className="lead">{l.lead}</p>
+            <HeroCtaM waMsg={l.waMsg} />
           </div>
           <div className="hg-photo rise d1"><PhotoStack photo={HERO_PHOTO[l.exam]} eager /></div>
           <div className="lead-card hg-form rise d2" id="enquire">
-            <LeadForm title="Talk to a mentor, free" subtitle="Get batch dates and fee details. We will call you back." course={course} formName={`${l.exam}-landing`} />
+            <LeadForm title="Get a call back" subtitle="A short call with a mentor about batch dates, timings and the fee." course={course} formName={`${l.exam}-landing`} />
           </div>
           <div className="hg-extra">
             <ul className="ticks">{l.ticks.map(t => <li key={t}><CheckCircle2 size={20} /> {t}</li>)}</ul>

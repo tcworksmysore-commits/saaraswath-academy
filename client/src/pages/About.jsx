@@ -33,7 +33,7 @@ export const About = () => (
           <p>Our classroom is at {ACADEMY_INFO.address}.</p>
           <div className="hero-actions">
             <Link className="b b-navy" to="/courses">See the courses</Link>
-            <button className="b b-line" onClick={() => openEnquiry({ form: 'about' })}>Book free counselling</button>
+            <button className="b b-line" onClick={() => openEnquiry({ form: 'about' })}>Get a call back</button>
           </div>
         </div>
         <div className="card logo-card">
@@ -53,7 +53,7 @@ export const About = () => (
           <p>{ACADEMY_INFO.founderExperience}</p>
           <p>{ACADEMY_INFO.founderBio}</p>
           <blockquote className="quote">“Every aspirant has potential. What helps most is a clear plan: knowing what to study, what to leave out, and writing answers that are reviewed honestly.”</blockquote>
-          <button className="b b-gold" onClick={() => openEnquiry({ form: 'about-founder' })}>Talk to the founder</button>
+          <button className="b b-gold" onClick={() => openEnquiry({ form: 'about-founder' })}>Get a call back</button>
         </div>
       </div>
     </section>

@@ -43,7 +43,7 @@ export const Courses = () => (
             <h2 className="h3">Not sure which course fits you?</h2>
             <p>Tell us your education and goal. A mentor will suggest the right exam, course and batch, free of cost.</p>
             <div className="acts" style={{ gridTemplateColumns: '1fr' }}>
-              <button className="b b-navy" onClick={() => openEnquiry({ course: 'Not sure, need counselling', form: 'courses-help' })}>Talk to a mentor</button>
+              <button className="b b-navy" onClick={() => openEnquiry({ course: 'Not sure, need counselling', form: 'courses-help' })}>Get a call back</button>
             </div>
           </article>
         </div>

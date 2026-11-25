@@ -8,7 +8,7 @@ import { landingByCourseId, LANDINGS } from '../data/courses';
 import { LeadForm } from '../components/common/LeadForm';
 import { openEnquiry } from '../components/common/Enquire';
 import { BrandIcon } from '../components/common/Brand';
-import { PhotoStack, PHOTOS, FacultyRow, GalleryStrip, MoreLink, ExamTiles, ResultsStrip, VideoPair, CallbackCard } from '../components/common/Visual';
+import { PhotoStack, HeroCtaM, PHOTOS, FacultyRow, GalleryStrip, MoreLink, ExamTiles, ResultsStrip, VideoPair, CallbackCard } from '../components/common/Visual';
 import { ACADEMY_INFO, INITIAL_COURSES, INITIAL_ACHIEVERS, getWhatsAppLink, telLink } from '../utils/constants';
 
 const YT_UPLOADS = 'UUOMaPN30n6XB7h34Kac75oA'; // uploads playlist of @Saaraswath.Mysore
@@ -26,8 +26,8 @@ const FAQS = [
   ['Which courses do you offer?', 'UPSC Civil Services (IAS/IPS), KPSC KAS, Karnataka Police PSI/PC, a 3-year Degree + IAS/KAS foundation programme and Kannada Literature optional.'],
   ['Are classes in Kannada or English?', 'Both. Teaching and notes are bilingual, so Kannada-medium and English-medium aspirants learn together comfortably.'],
   ['Can I attend online?', 'Yes. Most programmes run in the classroom at Kuvempunagar, Mysuru, with online / hybrid options. Ask us for the current online batch.'],
-  ['What are the fees?', 'Fees depend on the course, batch and mode. Book a free counselling call or WhatsApp us and we will share the exact fee and any scholarship or instalment option.'],
-  ['Can I see a class before I join?', 'Ask during your free counselling call. We will explain how classes run and what is possible for your batch.'],
+  ['What are the fees?', 'Fees depend on the batch and mode. We tell you the exact fee on the first call, so no visit is needed.'],
+  ['Can I see a class before I join?', 'Ask on your call. We will tell you plainly what is possible for your batch and how classes run.'],
   ['I am still in my degree. Is it too early?', 'No. The 3-year Degree + IAS/KAS foundation runs on weekends and evenings, so it never clashes with college.'],
 ];
 
@@ -52,8 +52,9 @@ export const Home = () => (
   <PageLayout>
     <SEO
       fullTitle="IAS & KAS Coaching in Mysuru | Saaraswath IAS/KAS Academy"
-      description="Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru: UPSC Civil Services, KPSC KAS, PSI/PC coaching in Kannada & English. Book a free counselling call."
+      description="Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru: UPSC Civil Services, KPSC KAS, PSI/PC coaching in Kannada & English. Get a free call back from a mentor."
       jsonLd={faqLd(FAQS)}
+      preload="academy-front"
     />
 
     {/* Hero with the enquiry form above the fold */}
@@ -65,11 +66,12 @@ export const Home = () => (
           <h1>IAS &amp; KAS coaching in Mysuru, <em>with a mentor who knows you.</em></h1>
           <p className="kn">ನಿಮ್ಮ ಐಎಎಸ್ / ಕೆಎಎಸ್ ಕನಸಿಗೆ ಸರಿಯಾದ ಮಾರ್ಗದರ್ಶನ</p>
           <p className="lead">UPSC, KPSC KAS and PSI coaching with personal mentorship by {ACADEMY_INFO.founder}, weekly answer evaluation and bilingual classes.</p>
+          <HeroCtaM />
         </div>
         <div className="hg-photo rise d1"><PhotoStack photo={PHOTOS.front} tag="Panchamantra Road, Kuvempunagar" eager /></div>
         <div className="hg-extra">
           <ul className="ticks">
-            <li><CheckCircle2 size={20} /> Free counselling call before you join</li>
+            <li><CheckCircle2 size={20} /> A free call with a mentor before you join</li>
             <li><CheckCircle2 size={20} /> Classroom in Kuvempunagar, Mysuru · online option</li>
             <li><CheckCircle2 size={20} /> Morning, evening &amp; weekend batches</li>
           </ul>
@@ -84,7 +86,7 @@ export const Home = () => (
           </div>
         </div>
         <div className="lead-card hg-form rise d2" id="enquire">
-          <LeadForm title="Book your free counselling" subtitle="Get course, batch and fee details. We call you back." formName="hero" />
+          <LeadForm title="Get a call back" subtitle="A short call with a mentor about the right course, batch and fee for you." formName="hero" />
         </div>
       </div>
     </section>
@@ -138,7 +140,7 @@ export const Home = () => (
             <h3>Not sure which course fits you?</h3>
             <p>Tell us your education and goal. Our mentor will suggest the right exam, course and batch, free.</p>
             <div className="acts" style={{ gridTemplateColumns: '1fr' }}>
-              <button className="b b-navy" onClick={() => openEnquiry({ course: 'Not sure, need counselling', form: 'course-help' })}>Talk to a mentor</button>
+              <button className="b b-navy" onClick={() => openEnquiry({ course: 'Not sure, need counselling', form: 'course-help' })}>Get a call back</button>
               <button className="b b-line" onClick={() => openEnquiry({ variant: 'brochure', form: 'home-brochure' })}><Download size={17} /> Download brochure</button>
             </div>
           </article>
@@ -177,7 +179,7 @@ export const Home = () => (
           <p>{ACADEMY_INFO.founderExperience}</p>
           <p>{ACADEMY_INFO.founderBio}</p>
           <div className="hero-actions">
-            <button className="b b-gold" onClick={() => openEnquiry({ form: 'founder' })}>Talk to the founder</button>
+            <button className="b b-gold" onClick={() => openEnquiry({ form: 'founder' })}>Get a call back</button>
             <Link className="b b-line" to="/about">About the academy</Link>
           </div>
         </div>
@@ -243,11 +245,11 @@ export const Home = () => (
       <div className="wrap">
         <div className="band">
           <div>
-            <h2>Start with a free counselling call</h2>
+            <h2>Start with a short call</h2>
             <p>Visit us at Kuvempunagar, Mysuru, or talk to us today. We help you pick the right exam, course and batch.</p>
           </div>
           <div className="acts">
-            <button className="b b-gold" onClick={() => openEnquiry({ form: 'cta-band' })}>Book free counselling</button>
+            <button className="b b-gold" onClick={() => openEnquiry({ form: 'cta-band' })}>Get a call back</button>
             <a className="b b-wa" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer"><BrandIcon name="whatsapp" /> WhatsApp us</a>
           </div>
         </div>

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { MapPin, Quote, ArrowRight, Landmark, Building2, ShieldCheck, GraduationCap, Feather, Play, PhoneCall, Check } from 'lucide-react';
 import { openEnquiry } from './Enquire';
 import { LeadForm } from './LeadForm';
-import { getAssetUrl, ACADEMY_INFO, INITIAL_FACULTY } from '../../utils/constants';
+import { getAssetUrl, ACADEMY_INFO, INITIAL_FACULTY, getWhatsAppLink } from '../../utils/constants';
+import { BrandIcon } from './Brand';
 
 // Visual building blocks for the premium layer (styles in styles/polish.css).
 // All render the same on server and client (no window/document during render).
@@ -33,7 +34,8 @@ export const Photo = ({ p, sizes = '(min-width: 960px) 520px, 90vw', eager = fal
     width="720"
     height={p.h}
     loading={eager ? 'eager' : 'lazy'}
-    decoding="async"
+    fetchpriority={eager ? 'high' : undefined}
+    decoding={eager ? 'sync' : 'async'}
   />
 );
 
@@ -103,7 +105,7 @@ export const VideoCard = ({ v }) => {
           <video src={getAssetUrl(`/videos/${v.k}.mp4`)} poster={getAssetUrl(`/videos/${v.k}.webp`)} controls autoPlay playsInline preload="none" width="540" height="960" />
         ) : (
           <button type="button" onClick={() => setOn(true)} aria-label={`Play video: ${v.t}`}>
-            <img src={getAssetUrl(`/videos/${v.k}.webp`)} alt="" width="540" height="960" loading="lazy" decoding="async" />
+            <img src={getAssetUrl(`/videos/${v.k}.webp`)} alt={`Video still: ${v.t}, Saaraswath Academy, Kuvempunagar, Mysuru`} width="540" height="960" loading="lazy" decoding="async" />
             <span className="vplay"><Play size={24} fill="currentColor" /></span>
           </button>
         )}
@@ -116,19 +118,27 @@ export const VideoPair = () => (
   <div className="vpair"><VideoCard v={VIDEOS.tour} /><VideoCard v={VIDEOS.mentor} /></div>
 );
 
+// Phone-only hero buttons, shown above the fold (the hero form sits below the photo on phones).
+export const HeroCtaM = ({ waMsg }) => (
+  <div className="hero-cta-m">
+    <a className="b b-gold" href="#enquire"><PhoneCall size={18} /> Get a call back</a>
+    <a className="b b-wa" href={getWhatsAppLink(waMsg)} target="_blank" rel="noopener noreferrer"><BrandIcon name="whatsapp" /> WhatsApp us</a>
+  </div>
+);
+
 // Short "request a call back" card placed mid-page (same LeadForm, no popup).
 export const CallbackCard = ({ course = '', form = 'callback', title = 'Prefer to talk first?' }) => (
   <div className="cbk">
     <div className="cbk-txt">
       <span className="cbk-ic"><PhoneCall size={22} /></span>
       <h2>{title}</h2>
-      <p>Leave your name and number. A mentor will call you back to answer your questions about the course, batch and fees.</p>
+      <p>Leave your name and number. A mentor, not a salesperson, calls you back to answer your questions about the course, batch and fees.</p>
       <ul>
-        <li><Check size={16} /> Free, no obligation to join</li>
+        <li><Check size={16} /> Free, no pressure to join</li>
         <li><Check size={16} /> Kannada or English, as you prefer</li>
       </ul>
     </div>
-    <div className="cbk-form"><LeadForm title="Request a call back" course={course} formName={form} /></div>
+    <div className="cbk-form"><LeadForm title="Get a call back" course={course} formName={form} /></div>
   </div>
 );
 
@@ -209,9 +219,9 @@ export const StickyCta = ({ label, course, form }) => {
     <div className={`scta${show ? ' on' : ''}`} aria-hidden={!show}>
       <div className="wrap">
         <b>{label}</b>
-        <span className="scta-note">Free counselling call · Kuvempunagar, Mysuru</span>
+        <span className="scta-note">Free call with a mentor · Kuvempunagar, Mysuru</span>
         <button className="b b-line" tabIndex={show ? 0 : -1} onClick={() => openEnquiry({ course, form: `${form}-fees` })}>Get fee details</button>
-        <button className="b b-gold" tabIndex={show ? 0 : -1} onClick={() => openEnquiry({ course, form: `${form}-call` })}>Book free counselling</button>
+        <button className="b b-gold" tabIndex={show ? 0 : -1} onClick={() => openEnquiry({ course, form: `${form}-call` })}>Get a call back</button>
       </div>
     </div>
   );

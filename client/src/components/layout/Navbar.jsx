@@ -12,7 +12,7 @@ const LINKS = [
 
 export const Logo = () => (
   <Link to="/" className="brand" aria-label="Saaraswath IAS/KAS Academy home">
-    <img src={ACADEMY_INFO.logoTight} alt="" width="44" height="44" />
+    <img src={ACADEMY_INFO.logoTight} alt="Saaraswath IAS/KAS Academy logo" width="44" height="44" />
     <span><b>SAARASWATH</b><small>IAS / KAS ACADEMY · MYSURU</small></span>
   </Link>
 );
@@ -31,7 +31,7 @@ export const Navbar = () => {
           <div className="strip-phones">
             {ACADEMY_INFO.phoneNumbers.map(n => <a key={n} href={telLink(n)}>📞 {n}</a>)}
           </div>
-          <span className="strip-msg">Admissions open · Free counselling call</span>
+          <span className="strip-msg">Kuvempunagar, Mysuru · Free call with a mentor</span>
           <Socials />
         </div>
       </div>
@@ -43,7 +43,7 @@ export const Navbar = () => {
           </nav>
           <div className="hdr-cta">
             <a className="b b-line" href={telLink(p1)}><Phone size={17} /> {p1}</a>
-            <button className="b b-gold" onClick={() => openEnquiry({ form: 'header' })}>Enquire</button>
+            <button className="b b-gold" onClick={() => openEnquiry({ form: 'header' })}>Get a call back</button>
           </div>
           <button className="burger" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open}><Menu size={24} /></button>
         </div>
@@ -62,7 +62,7 @@ export const Navbar = () => {
               ))}
             </nav>
             <div className="calls">
-              <button className="b b-gold b-block" onClick={() => { setOpen(false); openEnquiry({ form: 'menu' }); }}>Book free counselling</button>
+              <button className="b b-gold b-block" onClick={() => { setOpen(false); openEnquiry({ form: 'menu' }); }}>Get a call back</button>
               <a className="b b-wa b-block" href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer"><BrandIcon name="whatsapp" /> WhatsApp</a>
               {ACADEMY_INFO.phoneNumbers.map(n => <a key={n} className="b b-line b-block" href={telLink(n)}><Phone size={17} /> {n}</a>)}
             </div>
