@@ -8,7 +8,7 @@ SRC, OUT, SIZE = 'public/images/faculty', 'public/images/web', 320
 DEFAULT = (0.5, 0.36, 0.86)  # cx, cy, side (fractions)
 FIX = {
     'sri-akash.webp': (0.5, 0.5, 1.0), 'sri-rachana.webp': (0.5, 0.5, 1.0), 'sri-sandhya-g-s.webp': (0.5, 0.45, 1.0),
-    'sri-raghu-m-raj.webp': (0.5, 0.27, 0.58), 'sri-ashwini.webp': (0.5, 0.33, 0.76),
+    'sri-raghu-m-raj.webp': (0.505, 0.325, 0.5), 'sri-ashwini.webp': (0.5, 0.33, 0.76),
 }
 done = []
 for p in sorted(glob.glob(f'{SRC}/*.webp')):
