@@ -99,6 +99,45 @@ all 4 upgrades, inner heroes text-left/photo-right, **clean sans headings** (Fra
   school entrance, "SINCE 2016", Oct 12 date) was NOT used: not a listed course, and it conflicts with "since 2019".
 - Founding year confirmed by the user: **2019** (the "SINCE 2016" in the Navodaya reel is not used on the site).
 
+## Phase 5 plan (audit 2026-11-25, `WEBSITE_AUDIT.md`; user: "you decide best")
+User feedback on Phase 4: "not nice fonts and design, the previous was better" (hero: heavy 800 Jakarta, gold highlighter strip,
+gaps before "," and ".", tiny faint Kannada line). User answers: look = Claude chooses a premium one; build order = Claude decides;
+fees = honest line, no numbers; results cards = keep as they are (do not change names/honorifics/cards).
+**5a (next chat, Opus for design):**
+1. Premium type: Fraunces (600, normal tracking) for display headings + Plus Jakarta Sans body; plain accent colour, no highlighter;
+   fix the punctuation gaps; Kannada hero line 18-20px, darker. Check 375 + 1280, show the user a screenshot.
+2. Form + CTA trust (audit 1.1-1.3, 2.2, 2.4): main CTA "Get a call back"; "what happens next" 3 steps; privacy line "One call from
+   76194 15566. No marketing SMS, number never shared"; How to reach you (Call/WhatsApp/Visit) + best time; **while LEAD_URL is
+   empty, the form opens WhatsApp with the details prefilled** so no lead is lost. Fees FAQ/CTA = honest line ("Fees depend on batch
+   and mode; we tell you the exact fee on the first call, no visit needed").
+3. Mobile hero: two buttons above the fold, smaller photo. Speed: preload hero img + fetchpriority, self-host fonts, favicon
+   413 KB -> <10 KB, 1200x630 og share images + summary_large_image, 4 missing alts.
+4. Build, check, push small commits, verify live.
+**5b later:** Kannada /kn/ pages + hreflang; content engine (exam calendar 2027, monthly Karnataka CA, KAS syllabus/booklist PDFs).
+Academy to-dos (Apps Script URL, domain, GBP, reviews, photos, hours, batch dates): list in WEBSITE_AUDIT.md.
+
+## Phase 5a done (2026-11-25, commits a944ec5, 866cb87, 9785094)
+- **Type:** `--font-display` = Fraunces 600 (headings, course/article h3, footer h4, sticky bar), body Plus Jakarta Sans.
+  Fonts are self-hosted via `@fontsource/*` (imported in `main.jsx`, latin + Kannada subsets only); the Google Fonts links are gone.
+  Hero `em` = plain accent colour `--accent-ink` #9a6a00 (no highlighter, no padding, so no gap before "," or "."). Kannada hero line 19px (18px phone), navy.
+- **Form (`LeadForm.jsx`):** button "Get a call back"; chips "How should we reach you?" (Call / WhatsApp only / I will visit) and
+  "Best time" (Morning / Evening / Weekend), sent inside `message` (so `Code.gs` columns are unchanged); 3-step "what happens next"
+  under the form and on the thank-you screen; privacy line "One call from 76194 15566. No marketing SMS, and your number is never
+  shared." + Privacy link. **While `LEAD_URL` is empty, submit opens WhatsApp with all details prefilled** and the thank-you screen
+  asks the visitor to tap Send. Once the Apps Script URL is set, it posts to the sheet and WhatsApp is only an optional button.
+- **CTA wording:** "Get a call back" (form/modal/header/menu/bands/sticky bar) + "WhatsApp us"; "Get fee details" kept. Fee FAQ
+  everywhere: "Fees depend on the batch and mode. We tell you the exact fee on the first call, so no visit is needed." No numbers.
+- **Phone hero:** `HeroCtaM` (Visual.jsx) shows "Get a call back" (#enquire) + "WhatsApp us" under the lead text below 960px;
+  hero photo 16:9 on phones. Both buttons sit above the fold at 375x812.
+- **Speed/share:** SEO takes `preload` (hero photo key) and `image` (og name); prerender writes a `<link rel=preload as=image
+  imagesrcset fetchpriority=high>` and the per-page og:image; eager `<Photo>` has fetchpriority=high. favicon.ico 413 KB -> 5 KB,
+  `apple-touch-icon.png` 180px. Share images `public/images/og/{home,ias,kas,psi,foundation,optional}.jpg` (1200x630, made by
+  `client/scripts/make_og.py`, rerun it if titles/photos change), `summary_large_image`. Alt text on logos + video posters.
+- Results/achiever cards untouched. Checked 375 + 1280 on the built site: no console errors, no horizontal scroll, form WhatsApp
+  fallback tested (prefilled text correct).
+- Not done (next): navbar/footer logo still loads the 98 KB `academy-logo-tight.webp` at 44px (make a 96px version); inner-page
+  heroes do not preload their photo yet.
+
 ## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
 - /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
