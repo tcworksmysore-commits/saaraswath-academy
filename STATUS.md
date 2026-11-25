@@ -53,6 +53,23 @@ best SEO; very nice articles + recent updates; should top Google; whoever clicks
 6. Local SEO checklist for the user: Google Business Profile (link the site, posts, reviews), Search Console + sitemap submit, Bing.
 7. Build, check mobile + desktop, push in small commits, verify live. Lead URL still pending from the user (SETUP.md).
 
+## Phase 2 done (2026-11-25)
+- **Pre-render:** `npm run build` = vite build + SSR build of `src/entry-server.jsx` + `scripts/prerender.mjs`, which writes
+  `dist/<route>.html` and `dist/<route>/index.html` for every route in `ROUTES` (entry-server.jsx), injects title/description/
+  canonical/og + JSON-LD (Breadcrumb, Course, FAQPage, Article) from `<SEO>` (headStore), writes `sitemap.xml` and a noindex `404.html`.
+  main.jsx hydrates. New route → add it to App.jsx AND to ROUTES.
+- **Landing pages** from `src/data/courses.js` (template `pages/CourseLanding.jsx`): /ias-coaching-in-mysuru, /kas-coaching-in-mysuru,
+  /psi-coaching-in-mysuru, /upsc-foundation-course-for-degree-students, /kannada-literature-optional-coaching. Old /upsc, /kas,
+  /courses/<id> render the same page with canonical → landing.
+- **Articles** in `src/data/articles.js` (markdown body; how-to-add note at top), /articles + /articles/<slug>. 7 posts. Exam facts came
+  from news reports (upsc.gov.in 403, kpsc site unreachable to the bot); articles say "confirm on official site". Fact sheet:
+  side-session notes `exam_facts.md`. KAS 2026 = 319 posts, prelims 15 Nov 2026; UPSC CSE 2027: notif 13 Jan, prelims 23 May, mains 20 Aug 2027.
+- Inner pages rewritten on site.css (shared blocks in `components/common/Blocks.jsx`); boastful copy removed; "demo class" promises
+  removed (user chose free counselling call as the offer); timings shown generically (user choice). /study-materials → /free-resources
+  (official links only). Old components/services deleted.
+- `LOCAL_SEO_CHECKLIST.md` for the user (GBP, reviews, Search Console, Bing, citations).
+- Still pending from the user: Apps Script lead URL (SETUP.md), Search Console verification tag, domain, verified results/review count.
+
 ## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
 - /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
