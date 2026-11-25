@@ -57,7 +57,7 @@ export const Home = () => (
       <div className="wrap hg">
         <div className="hg-intro">
           <span className="pill"><i /> Admissions open · New batches in Mysuru</span>
-          <h1>Become an <em>IAS / KAS</em> officer, guided from Mysuru.</h1>
+          <h1>IAS &amp; KAS coaching in Mysuru, <em>with a mentor who knows you.</em></h1>
           <p className="kn">ನಿಮ್ಮ ಐಎಎಸ್ / ಕೆಎಎಸ್ ಕನಸಿಗೆ ಸರಿಯಾದ ಮಾರ್ಗದರ್ಶನ</p>
           <p className="lead">UPSC, KPSC KAS and PSI coaching with personal mentorship by {ACADEMY_INFO.founder}, weekly answer evaluation and bilingual classes.</p>
         </div>
