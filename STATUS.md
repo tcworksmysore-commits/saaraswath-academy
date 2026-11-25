@@ -33,7 +33,27 @@ Project: `E:\WEB SITES\SAARASWATH-ACADEMY-main\SAARASWATH-ACADEMY-main` (Vite + 
 - Images → WebP (38.4 → 6.2 MB), brochure 36 → 5.4 MB. SEO: meta, canonical, JSON-LD EducationalOrganization+LocalBusiness, sitemap, robots.
 - History was restarted slim (old 60 MB commits kept locally on branch `backup-before-slim`).
 
-## Next (phase 2 ideas)
+Live and checked on mobile 2026-11-25: https://tcworksmysore-commits.github.io/saaraswath-academy/ (pushes work; slow link → push big files in small commits).
+
+## Phase 2 (user request 2026-11-25, verbatim gist): "landing pages for all the courses and many more; everything very nice,
+aimed at leads and convincing a visitor this is the best academy; NO bold statements, simple, humble, nicer, more convincing;
+best SEO; very nice articles + recent updates; should top Google; whoever clicks should become a student; do whatever it takes."
+1. **Pre-render every route to static HTML** (SEO blocker: on GitHub Pages deep links are served with HTTP 404 via 404.html). E.g. a
+   post-build script rendering each route (react-dom/server + StaticRouter, or vite-plugin-prerender style) into dist/<route>/index.html
+   with its own <title>, description, canonical, JSON-LD (Course, FAQPage, BreadcrumbList, Article). Keep 404.html only for unknown paths.
+2. **Course landing pages** (one per course + local-intent pages: "IAS coaching in Mysuru", "KAS coaching in Mysuru", "PSI coaching Mysuru",
+   "UPSC foundation for degree students", Kannada optional), each: humble hero + form above fold, who it's for, syllabus/what you get,
+   batch/timing/mode, mentor, results, FAQ, fee CTA ("Get fee details"), WhatsApp. Tone: calm, specific, honest; no superlatives/claims
+   ("best", "top", "guaranteed", "360-degree", "high selection rate", "All-India benchmarking" in constants.js must go).
+3. **Articles / updates section** (/articles, markdown or JS data): strategy guides, KPSC/UPSC exam notifications & dates, syllabus,
+   booklists, Karnataka current affairs. Accurate facts only (verify dates/notifications on official sites upsc.gov.in / kpsc.kar.nic.in);
+   each article ends with a soft counselling CTA. Plan an easy way for the academy to add posts later.
+4. Restyle the inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) to site.css; rewrite boastful copy.
+5. /study-materials: lists fake "official question papers" (all download the brochure) with made-up counts → fix or remove.
+6. Local SEO checklist for the user: Google Business Profile (link the site, posts, reviews), Search Console + sitemap submit, Bing.
+7. Build, check mobile + desktop, push in small commits, verify live. Lead URL still pending from the user (SETUP.md).
+
+## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
 - /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
 - Add a verified selections count / Google reviews when the academy provides them.
