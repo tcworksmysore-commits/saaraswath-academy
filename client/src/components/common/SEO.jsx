@@ -50,15 +50,17 @@ const setMeta = (sel, attr, val) => { const el = document.querySelector(sel); if
  * title: page title (site name is appended); fullTitle overrides it entirely.
  * canonical: path to use as canonical (default: current path). crumbs: [['Courses','/courses'], ...].
  * jsonLd: object or array of schema.org objects. noindex: true for 404.
+ * image: share-image name in /images/og/ (default 'home'). preload: hero photo key in /images/web/ to preload.
  */
-export const SEO = ({ title, fullTitle, description, canonical, crumbs, jsonLd, noindex }) => {
+export const SEO = ({ title, fullTitle, description, canonical, crumbs, jsonLd, noindex, image = 'home', preload }) => {
   const { pathname } = useLocation();
   const t = fullTitle || (title ? `${title} | Saaraswath IAS/KAS Academy, Mysuru` : 'Saaraswath IAS/KAS Academy, Mysuru | IAS & KAS Coaching');
   const path = canonical || (pathname.length > 1 ? pathname.replace(/\/$/, '') : '/');
   const url = SITE_URL + path;
   const ld = [...(crumbs ? [crumbsLd(crumbs)] : []), ...(jsonLd ? [].concat(jsonLd) : [])];
 
-  if (typeof window === 'undefined') headStore.current = { title: t, description, url, ld, noindex };
+  const img = `${SITE_URL}/images/og/${image}.jpg`;
+  if (typeof window === 'undefined') headStore.current = { title: t, description, url, ld, noindex, image: img, preload };
 
   useEffect(() => {
     document.title = t;
@@ -69,7 +71,8 @@ export const SEO = ({ title, fullTitle, description, canonical, crumbs, jsonLd, 
     }
     setMeta('link[rel="canonical"]', 'href', url);
     setMeta('meta[property="og:url"]', 'content', url);
-  }, [t, description, url]);
+    setMeta('meta[property="og:image"]', 'content', img);
+  }, [t, description, url, img]);
   return null;
 };
 

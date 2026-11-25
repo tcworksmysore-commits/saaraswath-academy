@@ -22,13 +22,17 @@ const page = (route) => {
     .replace(/(<meta property="og:title" content=")[^"]*/, `$1${esc(head.title)}`)
     .replace(/(<link rel="canonical" href=")[^"]*/, `$1${esc(head.url)}`)
     .replace(/(<meta property="og:url" content=")[^"]*/, `$1${esc(head.url)}`)
+    .replace(/(<meta property="og:image" content=")[^"]*/, `$1${esc(head.image)}`)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
   if (head.description) {
     out = out
       .replace(/(<meta name="description" content=")[^"]*/, `$1${esc(head.description)}`)
       .replace(/(<meta property="og:description" content=")[^"]*/, `$1${esc(head.description)}`);
   }
+  // Hero photo first: preload it with high priority (same srcset/sizes as <Photo>), so LCP does not wait for the JS.
+  const w = (k, n) => `${base}/images/web/${k}-${n}.webp`;
   const extra = [
+    head.preload ? `<link rel="preload" as="image" href="${w(head.preload, 720)}" imagesrcset="${w(head.preload, 420)} 420w, ${w(head.preload, 720)} 720w" imagesizes="(min-width: 960px) 520px, 90vw" fetchpriority="high" />` : '',
     head.noindex ? '<meta name="robots" content="noindex" />' : '',
     ...head.ld.map(o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`),
   ].join('\n    ');

@@ -11,7 +11,7 @@ export const Footer = () => (
       <div className="ftr-grid">
         <div>
           <Link to="/" className="brand">
-            <img src={ACADEMY_INFO.logoTight} alt="" width="44" height="44" loading="lazy" />
+            <img src={ACADEMY_INFO.logoTight} alt="Saaraswath IAS/KAS Academy logo" width="44" height="44" loading="lazy" />
             <span><b>SAARASWATH</b><small>IAS / KAS ACADEMY · MYSURU</small></span>
           </Link>
           <p style={{ margin: '14px 0 16px' }}>
