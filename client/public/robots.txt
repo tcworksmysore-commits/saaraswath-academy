@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tcworksmysore-commits.github.io/saaraswath-academy/sitemap.xml

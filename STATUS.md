@@ -1,0 +1,58 @@
+# Saaraswath website: STATUS / build brief
+
+Goal: the best IAS/KAS academy website in Karnataka, built to **generate leads**. Budget: zero (only a domain later).
+Project: `E:\WEB SITES\SAARASWATH-ACADEMY-main\SAARASWATH-ACADEMY-main` (Vite + React 18 + react-router, plain CSS).
+
+## Done (phase 0, 2026-11-25)
+- GitHub account **tcworksmysore-commits**; repo `tcworksmysore-commits/saaraswath-academy` (public).
+  Remote: `https://tcworksmysore-commits@github.com/...` (this PC also has another cached GitHub login: nagalingeshwara1963-design; don't use it).
+  Push needs the interactive sign-in; if a push fails with "terminal prompts disabled", run it with `run_in_terminal`.
+- `.github/workflows/deploy.yml` builds `client/` and deploys to GitHub Pages on each push to main.
+  **Pages source must be set to "GitHub Actions"** (repo Settings → Pages). Live URL: https://tcworksmysore-commits.github.io/saaraswath-academy/
+- vite base = `/saaraswath-academy/` (override with env `VITE_BASE=/`). SPA 404 redirect: `client/public/404.html` (pathSegmentsToKeep=1).
+- **Planned domain: saaraswathmysore.in** (already printed on their YouTube; NOT registered yet). When bought: VITE_BASE=/,
+  pathSegmentsToKeep=0, add `client/public/CNAME`, fix sitemap.xml/robots.txt/canonical/og URLs (they currently say saaraswathacademy.com, which is wrong).
+
+## Real contact data (use everywhere; constants.js is the single source)
+- Phones: 7619415566 (also WhatsApp), 7348845454, 7619615566
+- Display email: srisaaraswath@gmail.com (keep). **Lead alerts go to saaraswath.mysore@gmail.com.**
+- Address: No. 608, 1st Floor, P & T Block, Near Gnanaganga PU College, Panchamantra Road, Kuvempunagar, Mysuru 570023
+- Maps: https://maps.app.goo.gl/HsmnvRnqMMPBs4c49
+- Instagram https://instagram.com/saaraswath.mysore · Facebook https://facebook.com/SaaraswathAcademyMysore
+- YouTube https://www.youtube.com/@Saaraswath.Mysore · Telegram https://t.me/saaraswath
+- Founder: Dr. Vasanth Kumar N; founded 2019. Courses: UPSC CSE, KPSC KAS, PSI/PC, 3-yr degree foundation, Kannada literature optional.
+
+## Phase 1 done (2026-11-25)
+- Leads: `services/enquiryService.js` POSTs (no-cors, form-encoded) to `LEAD_URL` (= env `VITE_LEAD_URL`, set as a repo
+  Actions variable or hard-code in constants.js). `google-apps-script/Code.gs` + `SETUP.md` written; **user must deploy it and send the /exec URL**.
+  Until then forms show success but only console.warn the lead (no data lost to localStorage any more, but none delivered either).
+- One form for the whole site: `components/common/LeadForm.jsx` (short/full/brochure). `Enquire.jsx` = global modal
+  (`openEnquiry({course, variant})`) + mobile bottom bar (Call/WhatsApp/Enquire) + desktop WhatsApp button. Brochure links are gated.
+- New design layer `styles/site.css` (bright navy+gold); new Navbar (top strip w/ 3 phones + socials), Footer, Home, Contact (Maps embed).
+  Old home components / old forms / MobileMenu / api.js / validators deleted.
+- Images → WebP (38.4 → 6.2 MB), brochure 36 → 5.4 MB. SEO: meta, canonical, JSON-LD EducationalOrganization+LocalBusiness, sitemap, robots.
+- History was restarted slim (old 60 MB commits kept locally on branch `backup-before-slim`).
+
+## Next (phase 2 ideas)
+- Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
+- /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
+- Add a verified selections count / Google reviews when the academy provides them.
+
+## Phase 1 brief (original)
+1. **Leads (top priority):** `services/enquiryService.js` saves only to localStorage, so leads go NOWHERE right now. Replace it with a POST
+   (`no-cors`, form-encoded) to a Google Apps Script web app, whose URL goes in `VITE_LEAD_URL` / constants. Write `google-apps-script/Code.gs`:
+   doPost → append a row (time, name, phone, email, course, mode, message, page, source/UTM) to the sheet "Leads"; MailApp
+   email to saaraswath.mysore@gmail.com; honeypot field + basic phone validation. Add a status column (New/Called/Joined) with dropdown.
+   Write `google-apps-script/SETUP.md`: 5-click steps for the user while signed in to saaraswath.mysore@gmail.com
+   (new sheet → Extensions → Apps Script → paste → Deploy as web app, "Anyone" → copy URL). The user does this step.
+   Show a success screen with WhatsApp follow-up offered, never forced.
+2. **Contact everywhere:** sticky mobile bottom bar (Call · WhatsApp · Enquire), floating WhatsApp on desktop, header phone,
+   footer with all socials (lucide has no brand icons; use inline SVGs), click-to-call links for all 3 numbers, Maps embed on Contact.
+3. **Design overhaul:** research top IAS academies (Vajiram, Vision IAS, Shankar IAS, Insights IAS, Drishti, plus Karnataka ones) and beat them:
+   bright, premium, trustworthy; strong hero with a clear offer + enquiry form above the fold; results/achievers proof, founder,
+   free demo class / counselling CTA, brochure download behind a lead form (optional), course pages with fees/batch/mode CTA,
+   FAQ, testimonials, YouTube embeds (latest videos), Kannada+English friendly. Mobile-first; most visitors use phones.
+4. **Speed:** images total 36.6 MB, brochure PDF 35 MB. Convert images to WebP (≤200 KB each), compress the PDF (<5 MB),
+   lazy-load, aim for Lighthouse ≥90. Remove dead backend bits (api.js admin token, MONGODB/JWT .env.example).
+5. SEO: local "IAS coaching Mysore" / "KAS coaching Mysuru", schema.org EducationalOrganization + LocalBusiness, fix the domain in meta.
+6. Test (`npm run build`, browser pane at mobile + desktop), commit, push, verify the live URL.
