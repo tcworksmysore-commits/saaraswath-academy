@@ -70,6 +70,20 @@ best SEO; very nice articles + recent updates; should top Google; whoever clicks
 - `LOCAL_SEO_CHECKLIST.md` for the user (GBP, reviews, Search Console, Bing, citations).
 - Still pending from the user: Apps Script lead URL (SETUP.md), Search Console verification tag, domain, verified results/review count.
 
+## Phase 3 design polish done (2026-11-25)
+User choices: hero = photo collage (place photo + founder portrait), serif display headings (Fraunces), generic
+"How a batch runs" strip, desktop slim sticky CTA bar after the hero.
+- New `components/common/Visual.jsx` (PhotoStack, Photo/PHOTOS, Timeline, Flow, FacultyRow, Testimonial, GalleryStrip,
+  StickyCta, MoreLink) + `styles/polish.css` (loaded after site.css). Light photos in `public/images/web/` (720/420 WebP,
+  faculty avatars `av-*.webp` 128px).
+- Course landings: collage hero, varied icons per card, exam-stage timeline, navy "how a batch runs" strip, framed mentor,
+  teaching-team avatars, testimonial (+ achievers), gallery strip, sticky CTA (desktop).
+- Home: collage hero (academy front), team + gallery section. `PageHero` takes `photo` (framed tilted card) on all inner
+  pages incl. Contact; Admissions steps = vertical timeline; card hovers, floating gallery cards, footer gold rule.
+- Fixed: header was not sticky (overflow-x: hidden on html/body) → `overflow-x: clip`.
+- Motion: CSS only (load rise + scroll reveal where `animation-timeline` is supported); reduced-motion turns it off.
+- Checked 375 + 1280, built pages hydrate with no console errors, no horizontal scroll.
+
 ## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
 - /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
