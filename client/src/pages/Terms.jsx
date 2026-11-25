@@ -1,60 +1,26 @@
 import React from 'react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
+import { PageHero } from '../components/common/Blocks';
 import { ACADEMY_INFO } from '../utils/constants';
 
-export const Terms = () => {
-  return (
-    <PageLayout>
-      <SEO
-        title="Terms of Service"
-        description="Terms and conditions for student admissions, code of conduct, and academic guidelines at Saaraswath Academy."
-      />
-
-      <div style={{ backgroundColor: 'var(--color-primary-900)', color: '#ffffff', padding: '4.5rem 0 3rem' }}>
-        <div className="container text-center">
-          <h1 style={{ fontSize: '2.5rem', fontWeight: 800 }}>Terms and Conditions</h1>
-          <p style={{ color: '#cbd5e1', fontSize: '0.95rem', marginTop: '0.5rem' }}>
-            Academic Guidelines & Enrollment Agreement
-          </p>
-        </div>
+export const Terms = () => (
+  <PageLayout>
+    <SEO title="Terms of Use" description="Terms of use of the Saaraswath IAS/KAS Academy, Mysuru website." />
+    <PageHero title="Terms of use" text="Last updated: November 2026" />
+    <section className="sec">
+      <div className="wrap prose narrow">
+        <h2>Information on this site</h2>
+        <p>We try to keep course and exam information accurate and up to date. Exam dates, eligibility and patterns are decided by UPSC, KPSC and other recruiting bodies; always confirm them on the official websites.</p>
+        <h2>Courses and fees</h2>
+        <p>Batch dates, timings and fees are shared during counselling and at admission, and may change. The admission form signed at the academy is the final agreement.</p>
+        <h2>Content</h2>
+        <p>Articles, notes and images on this site belong to {ACADEMY_INFO.name}. You may share links to them; please do not copy them in full without permission.</p>
+        <h2>Contact</h2>
+        <p>{ACADEMY_INFO.address} · +91 {ACADEMY_INFO.phoneNumbers[0]} · {ACADEMY_INFO.email}</p>
       </div>
-
-      <section className="section-py bg-white">
-        <div className="container container-narrow">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', color: '#334155', lineHeight: 1.7 }}>
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-primary-900)' }}>
-              1. Admission & Enrollment
-            </h3>
-            <p>
-              Admission to all UPSC, KAS, and competitive coaching batches at {ACADEMY_INFO.name} is subject to eligibility verification and seat availability.
-            </p>
-
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-primary-900)' }}>
-              2. Classroom Discipline & Code of Conduct
-            </h3>
-            <p>
-              Enrolled students are expected to maintain the highest standards of decorum, attendance, and respect towards faculty and fellow aspirants in the classroom and study halls.
-            </p>
-
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-primary-900)' }}>
-              3. Study Material & Intellectual Property
-            </h3>
-            <p>
-              All proprietary study notes, booklets, test papers, and model answers provided by {ACADEMY_INFO.name} are for the personal educational use of the enrolled student only. Unauthorized reproduction, distribution, or digital re-hosting is strictly prohibited.
-            </p>
-
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-primary-900)' }}>
-              4. Changes to Schedules & Faculty
-            </h3>
-            <p>
-              The management reserves the right to modify class schedules or assign faculty specialists based on pedagogical requirements and exam cycle demands.
-            </p>
-          </div>
-        </div>
-      </section>
-    </PageLayout>
-  );
-};
+    </section>
+  </PageLayout>
+);
 
 export default Terms;

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, Clock, MapPin, Users, BookOpen, PenLine, Languages, CalendarClock, MessagesSquare, Download, Phone } from 'lucide-react';
 import { PageLayout } from '../components/layout/PageLayout';
-import { SEO } from '../components/common/SEO';
+import { SEO, faqLd } from '../components/common/SEO';
+import { sortedArticles } from '../data/articles';
+import { landingByCourseId } from '../data/courses';
 import { LeadForm } from '../components/common/LeadForm';
 import { openEnquiry } from '../components/common/Enquire';
 import { BrandIcon } from '../components/common/Brand';
@@ -24,7 +26,7 @@ const FAQS = [
   ['Are classes in Kannada or English?', 'Both. Teaching and notes are bilingual, so Kannada-medium and English-medium aspirants learn together comfortably.'],
   ['Can I attend online?', 'Yes. Most programmes run in the classroom at Kuvempunagar, Mysuru, with online / hybrid options. Ask us for the current online batch.'],
   ['What are the fees?', 'Fees depend on the course, batch and mode. Book a free counselling call or WhatsApp us and we will share the exact fee and any scholarship or instalment option.'],
-  ['Can I attend a demo class first?', 'Yes. Book free counselling and we will arrange a demo class so you can see the teaching before you join.'],
+  ['Can I see a class before I join?', 'Ask during your free counselling call. We will explain how classes run and what is possible for your batch.'],
   ['I am still in my degree. Is it too early?', 'No. The 3-year Degree + IAS/KAS foundation runs on weekends and evenings, so it never clashes with college.'],
 ];
 
@@ -48,8 +50,9 @@ const YouTube = () => {
 export const Home = () => (
   <PageLayout>
     <SEO
-      title="Best IAS & KAS Coaching in Mysuru"
-      description="Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru: UPSC Civil Services, KPSC KAS, PSI/PC coaching in Kannada & English. Book a free counselling call and demo class."
+      fullTitle="IAS & KAS Coaching in Mysuru | Saaraswath IAS/KAS Academy"
+      description="Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru: UPSC Civil Services, KPSC KAS, PSI/PC coaching in Kannada & English. Book a free counselling call."
+      jsonLd={faqLd(FAQS)}
     />
 
     {/* Hero with the enquiry form above the fold */}
@@ -63,7 +66,7 @@ export const Home = () => (
         </div>
         <div className="hg-extra">
           <ul className="ticks">
-            <li><CheckCircle2 size={20} /> Free counselling + demo class before you join</li>
+            <li><CheckCircle2 size={20} /> Free counselling call before you join</li>
             <li><CheckCircle2 size={20} /> Classroom in Kuvempunagar, Mysuru · online option</li>
             <li><CheckCircle2 size={20} /> Morning, evening &amp; weekend batches</li>
           </ul>
@@ -102,8 +105,8 @@ export const Home = () => (
                 <span><MapPin size={15} /> {c.mode}</span>
               </div>
               <div className="acts">
-                <Link className="b b-line" to={`/courses/${c.id}`}>Details</Link>
-                <button className="b b-gold" onClick={() => openEnquiry({ course: c.title, form: 'course-card' })}>Get fees</button>
+                <Link className="b b-line" to={`/${landingByCourseId(c.id).slug}`}>Details</Link>
+                <button className="b b-gold" onClick={() => openEnquiry({ course: c.title, form: 'course-card' })}>Get fee details</button>
               </div>
             </article>
           ))}
@@ -187,6 +190,19 @@ export const Home = () => (
           <a className="b b-line" href={ACADEMY_INFO.socials.youtube} target="_blank" rel="noopener noreferrer"><BrandIcon name="youtube" /> Subscribe</a>
           <a className="b b-line" href={ACADEMY_INFO.socials.telegram} target="_blank" rel="noopener noreferrer"><BrandIcon name="telegram" /> Join Telegram</a>
         </div>
+      </div>
+    </section>
+
+    {/* Articles */}
+    <section className="sec">
+      <div className="wrap">
+        <div className="sh"><span className="tag">Updates</span><h2>Exam updates and guides</h2><p>Dates, syllabus and simple strategy, checked against official notifications.</p></div>
+        <div className="grid g3">
+          {sortedArticles().slice(0, 3).map(a => (
+            <Link key={a.slug} to={`/articles/${a.slug}`} className="card art"><span className="cat">{a.category} · {a.exam}</span><h3>{a.title}</h3><p>{a.description}</p><span className="more">Read more</span></Link>
+          ))}
+        </div>
+        <p style={{ textAlign: 'center', marginTop: 16 }}><Link className="b b-line" to="/articles">All articles</Link></p>
       </div>
     </section>
 

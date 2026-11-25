@@ -6,8 +6,8 @@ import { Socials, BrandIcon } from '../common/Brand';
 import { openEnquiry } from '../common/Enquire';
 
 const LINKS = [
-  ['/', 'Home'], ['/courses', 'Courses'], ['/upsc', 'UPSC'], ['/kas', 'KAS'], ['/faculty', 'Faculty'],
-  ['/achievements', 'Results'], ['/gallery', 'Gallery'], ['/about', 'About'], ['/contact', 'Contact'],
+  ['/', 'Home'], ['/courses', 'Courses'], ['/ias-coaching-in-mysuru', 'IAS'], ['/kas-coaching-in-mysuru', 'KAS'], ['/psi-coaching-in-mysuru', 'PSI'], ['/articles', 'Articles'],
+  ['/achievements', 'Results'], ['/about', 'About'], ['/contact', 'Contact'],
 ];
 
 export const Logo = () => (
@@ -31,7 +31,7 @@ export const Navbar = () => {
           <div className="strip-phones">
             {ACADEMY_INFO.phoneNumbers.map(n => <a key={n} href={telLink(n)}>📞 {n}</a>)}
           </div>
-          <span className="strip-msg">Admissions open · Free counselling &amp; demo class</span>
+          <span className="strip-msg">Admissions open · Free counselling call</span>
           <Socials />
         </div>
       </div>
@@ -57,7 +57,7 @@ export const Navbar = () => {
               <button className="burger" style={{ marginLeft: 0, display: 'grid' }} onClick={() => setOpen(false)} aria-label="Close menu"><X size={24} /></button>
             </div>
             <nav>
-              {[...LINKS, ['/admissions', 'Admissions']].map(([to, label]) => (
+              {[...LINKS, ['/faculty', 'Faculty'], ['/gallery', 'Gallery'], ['/free-resources', 'Free resources'], ['/admissions', 'Admissions']].map(([to, label]) => (
                 <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => (isActive ? 'on' : '')}>{label}</NavLink>
               ))}
             </nav>

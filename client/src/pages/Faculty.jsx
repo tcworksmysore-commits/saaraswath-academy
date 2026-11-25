@@ -1,65 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
-import { FacultyCard } from '../components/common/FacultyCard';
-import { INITIAL_FACULTY, getWhatsAppLink } from '../utils/constants';
-import { facultyService } from '../services/facultyService';
-import { MessageCircle } from 'lucide-react';
+import { PageHero, CtaBand } from '../components/common/Blocks';
+import { ACADEMY_INFO, INITIAL_FACULTY } from '../utils/constants';
 
-export const Faculty = () => {
-  const [facultyList, setFacultyList] = useState(INITIAL_FACULTY);
-
-  useEffect(() => {
-    facultyService.getAllFaculty().then(data => {
-      if (Array.isArray(data) && data.length > 0) setFacultyList(data);
-    }).catch(() => {});
-  }, []);
-
-  return (
-    <PageLayout>
-      <SEO
-        title="Distinguished Faculty & Mentors"
-        description="Meet the experienced resource persons and subject matter specialists at Saaraswath IAS/KAS Academy Mysuru."
-      />
-
-      {/* Header Banner */}
-      <div style={{ backgroundColor: 'var(--color-deep-navy)', color: '#FFFFFF', padding: '4.5rem 0 3.5rem', borderBottom: '3px solid var(--color-gold)' }}>
-        <div className="container text-center">
-          <span className="section-tag" style={{ color: 'var(--color-gold)' }}>ACADEMIC LEADERSHIP</span>
-          <h1 style={{ fontSize: '2.8rem', fontWeight: 800, color: '#FFFFFF', marginBottom: '1rem', letterSpacing: '-0.02em' }}>
-            Our Distinguished Faculty
-          </h1>
-          <p style={{ fontSize: '1.1rem', color: '#cbd5e1', maxWidth: '680px', margin: '0 auto 1.5rem' }}>
-            Experienced educators and subject matter specialists with comprehensive mastery of UPSC CSE and KPSC KAS examinations.
-          </p>
-          <a
-            href={getWhatsAppLink("Hello Saaraswath Academy, I would like to know more about the faculty and subjects.")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-sm"
-            style={{ backgroundColor: '#25D366', color: '#ffffff', fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-          >
-            <MessageCircle size={16} /> Connect with Faculty Desk on WhatsApp
-          </a>
-        </div>
-      </div>
-
-      {/* Faculty Grid: 3 cards desktop, 2 tablet, 1 mobile */}
-      <section className="section-py" style={{ backgroundColor: 'var(--color-soft-blue)' }}>
-        <div className="container">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-            gap: '2.25rem'
-          }}>
-            {facultyList.map((faculty) => (
-              <FacultyCard key={faculty.id} faculty={faculty} />
-            ))}
+export const Faculty = () => (
+  <PageLayout>
+    <SEO
+      title="Faculty"
+      description={`Meet the faculty of Saaraswath IAS/KAS Academy, Mysuru: ${ACADEMY_INFO.founder} and subject teachers for history, polity, geography, economy, current affairs and CSAT.`}
+      crumbs={[['Faculty', '/faculty']]}
+    />
+    <PageHero crumbs={[['Faculty']]} title="Our faculty" text="Subject teachers who teach in Kannada and English, led by the founder." />
+    <section className="sec">
+      <div className="wrap">
+        <div className="card fac fac-lead">
+          <img src={ACADEMY_INFO.founderPhoto} alt={ACADEMY_INFO.founder} width="160" height="200" loading="lazy" />
+          <div>
+            <h2 className="h3">{ACADEMY_INFO.founder}</h2>
+            <div className="spec">{ACADEMY_INFO.founderTitle}</div>
+            <p>{ACADEMY_INFO.founderExperience}</p>
           </div>
         </div>
-      </section>
-    </PageLayout>
-  );
-};
+        <div className="grid g3" style={{ marginTop: 16 }}>
+          {INITIAL_FACULTY.map(f => (
+            <article key={f.id} className="card fac">
+              <img src={f.image} alt={f.name} width="120" height="150" loading="lazy" decoding="async" />
+              <div>
+                <h2 className="h3">{f.name}</h2>
+                <div className="spec">{f.specialization}</div>
+                <small>{f.role} · {f.experience}</small>
+                <p>{f.bio}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+    <CtaBand title="Meet the teachers in person" text="Come for a free counselling session at Kuvempunagar, Mysuru, and ask any question about your preparation." />
+  </PageLayout>
+);
 
 export default Faculty;

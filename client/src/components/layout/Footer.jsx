@@ -23,11 +23,11 @@ export const Footer = () => (
         <div>
           <h4>Courses</h4>
           <ul>
-            <li><Link to="/upsc">UPSC Civil Services</Link></li>
-            <li><Link to="/kas">KPSC KAS</Link></li>
-            <li><Link to="/courses/psi-pc-foundation">PSI / PC</Link></li>
-            <li><Link to="/courses/foundation-degree">Degree Foundation</Link></li>
-            <li><Link to="/courses/kannada-literature-optional">Kannada Optional</Link></li>
+            <li><Link to="/ias-coaching-in-mysuru">IAS coaching in Mysuru</Link></li>
+            <li><Link to="/kas-coaching-in-mysuru">KAS coaching in Mysuru</Link></li>
+            <li><Link to="/psi-coaching-in-mysuru">PSI / PC coaching</Link></li>
+            <li><Link to="/upsc-foundation-course-for-degree-students">Foundation for degree students</Link></li>
+            <li><Link to="/kannada-literature-optional-coaching">Kannada Literature optional</Link></li>
           </ul>
         </div>
         <div>
@@ -36,7 +36,7 @@ export const Footer = () => (
             <li><Link to="/about">About us</Link></li>
             <li><Link to="/faculty">Faculty</Link></li>
             <li><Link to="/achievements">Results</Link></li>
-            <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li><li><Link to="/articles">Articles &amp; updates</Link></li><li><Link to="/free-resources">Free resources</Link></li><li><Link to="/admissions">Admissions</Link></li>
             <li><button onClick={() => openEnquiry({ variant: 'brochure', form: 'footer-brochure' })} style={{ background: 'none', border: 0, color: '#e6ecf7', cursor: 'pointer', font: 'inherit', padding: 0 }}>Download brochure</button></li>
           </ul>
         </div>

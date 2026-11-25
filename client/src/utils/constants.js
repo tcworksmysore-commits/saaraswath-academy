@@ -32,7 +32,7 @@ export const getAssetUrl = (path) => {
 
 export const ACADEMY_INFO = {
   name: "Saaraswath IAS/KAS Academy",
-  tagline: "The Success Blueprint",
+  tagline: "IAS / KAS coaching in Mysuru",
   since: "2019",
   founder: "Dr. Vasanth Kumar N",
   founderTitle: "Founder and Director",
@@ -74,27 +74,27 @@ export const INITIAL_COURSES = [
     title: "UPSC Civil Services Integrated (Prelims + Mains + Interview)",
     category: "UPSC",
     duration: "1 Year / 2 Years (Weekend & Regular)",
-    mode: "Classroom & Hybrid Online",
-    badge: "Flagship Program",
-    description: "Holistic 360-degree training covering General Studies Paper I & II (CSAT), Mains GS I-IV, Essay writing, Optional subject guidance, and personality development.",
+    mode: "Classroom in Mysuru · ask about online",
+    badge: "UPSC",
+    description: "Classroom coaching for Prelims (GS and CSAT), Mains (GS I-IV, Essay), optional guidance and interview preparation, with weekly answer writing.",
     features: [
       "Comprehensive Prelims & Mains Syllabus Coverage",
       "Daily Current Affairs & Editorial Analysis",
       "Weekly Answer Writing Mentorship",
-      "Rigorous Test Series with All-India Benchmarking",
-      "Personalized 1-on-1 Guidance by Dr. Vasanth Kumar N"
+      "Regular Prelims and Mains tests with feedback",
+      "One-to-one mentoring with Dr. Vasanth Kumar N"
     ],
     eligibility: "Any Degree or Final Year Graduation Students",
-    batchTimings: "Morning (7:30 AM - 10:00 AM) | Evening (5:30 PM - 8:00 PM) | Weekend Batches"
+    batchTimings: "Morning, evening and weekend batches; ask for the next batch date"
   },
   {
     id: "kpsc-kas-probationers",
     title: "KPSC KAS - Gazetted Probationers (Group A & B)",
     category: "KAS",
     duration: "10-12 Months",
-    mode: "Classroom & Hybrid Online",
-    badge: "State Premier",
-    description: "Specialized training tailored specifically to the Karnataka Public Service Commission syllabus, focusing on Karnataka History, Geography, Economy, Polity, and Kannada language mastery.",
+    mode: "Classroom in Mysuru · ask about online",
+    badge: "Karnataka",
+    description: "Coaching built around the KPSC syllabus: Karnataka history, geography, economy and polity, the Kannada and English papers, and Mains answer writing.",
     features: [
       "In-depth Karnataka Heritage, Culture & Economy modules",
       "KPSC Prelims Paper 1 & 2 complete coverage",
@@ -103,24 +103,24 @@ export const INITIAL_COURSES = [
       "State Economic Survey & Karnataka Budget special classes"
     ],
     eligibility: "Graduation in any discipline",
-    batchTimings: "Regular Daily & Exclusive Weekend Batches"
+    batchTimings: "Morning, evening and weekend batches; ask for the next batch date"
   },
   {
     id: "psi-pc-foundation",
     title: "Karnataka Police PSI & PC Comprehensive Coaching",
     category: "Police Services",
     duration: "4-6 Months",
-    mode: "Classroom",
-    badge: "High Selection Rate",
-    description: "Targeted module for Police Sub-Inspector (Civil, Armed, KSRP) and Police Constable aspirants featuring mental ability, general knowledge, constitution, and translation skills.",
+    mode: "Classroom in Mysuru · ask about online",
+    badge: "Police",
+    description: "For Police Sub-Inspector and Police Constable aspirants: general studies, mental ability, the Constitution, essay, precis and translation practice.",
     features: [
       "Focused translation (English to Kannada & Kannada to English)",
       "Precis writing and Essay drafting techniques",
       "General Mental Ability & Fast Aptitude tricks",
-      "Physical test fitness orientation & mental endurance coaching"
+      "Guidance on the physical endurance and measurement tests"
     ],
     eligibility: "Degree for PSI / PUC (10+2) for PC",
-    batchTimings: "Fast-track Batches Available"
+    batchTimings: "Morning, evening and weekend batches; ask for the next batch date"
   },
   {
     id: "foundation-degree",
@@ -128,32 +128,32 @@ export const INITIAL_COURSES = [
     category: "Foundation",
     duration: "3 Years",
     mode: "Weekend / Evening Classroom",
-    badge: "Early Starters",
-    description: "Ideal for undergraduate students (BA, BSc, BCom, BTech) who want to crack civil services in their very first attempt upon graduating.",
+    badge: "Degree students",
+    description: "For BA, BSc, BCom and BE students who want to build a strong base for UPSC/KAS while still in college, at a calm, steady pace.",
     features: [
-      "NCERT & Standard Reference Book mastery",
+      "NCERTs and standard reference books, step by step",
       "Critical thinking, public speaking & debate sessions",
       "Regular newspaper analysis habits from Day 1",
-      "Zero conflict with regular college academic schedules"
+      "Timings that fit around college classes"
     ],
     eligibility: "Students pursuing 1st / 2nd / 3rd Year Degree",
-    batchTimings: "Weekends (Saturday afternoon & Sunday)"
+    batchTimings: "Morning, evening and weekend batches; ask for the next batch date"
   },
   {
     id: "kannada-literature-optional",
     title: "Kannada Literature Optional (UPSC & KAS Mains)",
     category: "Optional",
     duration: "4 Months",
-    mode: "Classroom & Online",
-    badge: "High Scoring",
-    description: "Expert mentorship for Kannada Sahitya optional with classical & modern texts, linguistic analysis, poetic appreciation, and model answer writing.",
+    mode: "Classroom in Mysuru · ask about online",
+    badge: "Optional",
+    description: "Guidance for the Kannada Literature optional: prescribed classical and modern texts, history of the language and literature, and answer writing.",
     features: [
       "Halegannada, Nadugannada & Hosagannada texts analysis",
-      "Previous 15 years question papers solutions",
-      "Model answer templates by top scorers"
+      "Discussion of previous years' questions",
+      "Answer-writing practice with feedback"
     ],
     eligibility: "Aspirants choosing Kannada Literature Optional",
-    batchTimings: "Special Evening Sessions"
+    batchTimings: "Morning, evening and weekend batches; ask for the next batch date"
   }
 ];
 
@@ -164,7 +164,7 @@ export const INITIAL_FACULTY = [
     role: "Senior Resource Person",
     specialization: "Geography",
     experience: "10+ Years Mentoring",
-    bio: "Subject matter expert covering Physical, Indian, and Karnataka Geography with map-oriented conceptual clarity.",
+    bio: "Teaches Physical, Indian, and Karnataka Geography with map-oriented conceptual clarity.",
     image: getAssetUrl("/images/faculty/dr-krishna-kumar.webp")
   },
   {
@@ -173,7 +173,7 @@ export const INITIAL_FACULTY = [
     role: "Resource Person",
     specialization: "Constitution and Governance",
     experience: "8+ Years Mentoring",
-    bio: "Expert mentor for Indian Polity, Constitutional Provisions, and Administrative Governance structures.",
+    bio: "Teaches Indian Polity, Constitutional Provisions, and Administrative Governance structures.",
     image: getAssetUrl("/images/faculty/sri-akash.webp")
   },
   {
@@ -182,7 +182,7 @@ export const INITIAL_FACULTY = [
     role: "Resource Person",
     specialization: "Geography and Communication",
     experience: "8+ Years Mentoring",
-    bio: "Specialist in Human & Economic Geography, Cartography, and Interpersonal Communication Skills for civil service aspirants.",
+    bio: "Teaches Human & Economic Geography, Cartography, and Interpersonal Communication Skills for civil service aspirants.",
     image: getAssetUrl("/images/faculty/sri-raghu-m-raj.webp")
   },
   {
@@ -200,7 +200,7 @@ export const INITIAL_FACULTY = [
     role: "Resource Person",
     specialization: "Current Affairs and Content Writer",
     experience: "6+ Years Mentoring",
-    bio: "Dedicated specialist focusing on daily news evaluation, government policies, and structured notes formulation.",
+    bio: "Works on daily news evaluation, government policies, and structured notes formulation.",
     image: getAssetUrl("/images/faculty/sri-rachana.webp")
   },
   {
@@ -209,7 +209,7 @@ export const INITIAL_FACULTY = [
     role: "Resource Person",
     specialization: "Indian National Movement and Karnataka History",
     experience: "9+ Years Mentoring",
-    bio: "Authority on Modern Indian Freedom Movement, Princely Mysore, and Karnataka Unification history.",
+    bio: "Teaches the Modern Indian freedom movement, Princely Mysore, and Karnataka Unification history.",
     image: getAssetUrl("/images/faculty/sri-ashwini.webp")
   },
   {
@@ -218,7 +218,7 @@ export const INITIAL_FACULTY = [
     role: "Resource Person",
     specialization: "History and Culture",
     experience: "10+ Years Mentoring",
-    bio: "In-depth pedagogue for Ancient & Medieval Indian History, Art, Architecture, and cultural heritage.",
+    bio: "Teaches Ancient & Medieval Indian History, Art, Architecture, and cultural heritage.",
     image: getAssetUrl("/images/faculty/sri-kumar.webp")
   },
   {
@@ -227,7 +227,7 @@ export const INITIAL_FACULTY = [
     role: "Resource Person",
     specialization: "Modern History and Polity",
     experience: "11+ Years Mentoring",
-    bio: "Experienced instructor connecting historical institutional developments directly with contemporary governance.",
+    bio: "Connects historical institutional developments directly with contemporary governance.",
     image: getAssetUrl("/images/faculty/sri-narasimha-murthy.webp")
   },
   {
@@ -236,7 +236,7 @@ export const INITIAL_FACULTY = [
     role: "Resource Person",
     specialization: "Science and Technology, Environment and Economy",
     experience: "7+ Years Mentoring",
-    bio: "Specialist in applied science, climate treaties, biodiversity preservation, and macro-economic fundamentals.",
+    bio: "Teaches applied science, climate treaties, biodiversity preservation, and macro-economic fundamentals.",
     image: getAssetUrl("/images/faculty/sri-pratheeksha.webp")
   },
   {
@@ -245,7 +245,7 @@ export const INITIAL_FACULTY = [
     role: "Senior Resource Person",
     specialization: "General Mental Ability",
     experience: "15+ Years Mentoring",
-    bio: "Master mentor in CSAT aptitude, quantitative analysis, data interpretation, and analytical logic.",
+    bio: "Teaches CSAT aptitude, quantitative analysis, data interpretation, and analytical logic.",
     image: getAssetUrl("/images/faculty/prof-g-chandrashekaran.webp")
   }
 ];
@@ -316,7 +316,7 @@ export const INITIAL_GALLERY = [
     title: "Academy Felicitation & Achievers Meet",
     category: "Achievements",
     image: getAssetUrl("/images/achievements/event_1.webp"),
-    description: "Honoring our successful officers and rank holders."
+    description: "Meeting and felicitating students who were selected."
   },
   {
     id: "g3",
@@ -344,99 +344,6 @@ export const INITIAL_GALLERY = [
     title: "Felicitation Ceremony at Mysuru",
     category: "Achievements",
     image: getAssetUrl("/images/achievements/event_2.webp"),
-    description: "Celebrating milestone ranks of our students."
-  }
-];
-
-export const INITIAL_STUDY_MATERIALS = [
-  {
-    _id: "sm-1",
-    id: "sm-1",
-    title: "UPSC Civil Services Prelims 2024 - General Studies Paper I",
-    resourceType: "Question Paper",
-    examination: "UPSC",
-    subject: "General Studies",
-    year: "2024",
-    description: "Official UPSC CSE Prelims 2024 GS-1 question paper with answer keys and topic-wise breakdown.",
-    filePath: getAssetUrl("/brochures/academy-brochure.pdf"),
-    fileName: "upsc-prelims-2024-gs1.pdf",
-    fileSize: "1.8 MB",
-    isPublished: true,
-    downloadCount: 143,
-  },
-  {
-    _id: "sm-2",
-    id: "sm-2",
-    title: "KPSC KAS Gazetted Probationers 2024 - Prelims Paper I",
-    resourceType: "Question Paper",
-    examination: "KAS",
-    subject: "General Studies",
-    year: "2024",
-    description: "Official KAS Gazetted Probationers preliminary examination Paper-I in English & Kannada.",
-    filePath: getAssetUrl("/brochures/academy-brochure.pdf"),
-    fileName: "kpsc-kas-prelims-2024-paper1.pdf",
-    fileSize: "2.1 MB",
-    isPublished: true,
-    downloadCount: 189,
-  },
-  {
-    _id: "sm-3",
-    id: "sm-3",
-    title: "Indian Polity & Constitution - Comprehensive Revision Framework",
-    resourceType: "Study Notes",
-    examination: "UPSC",
-    subject: "Indian Polity",
-    year: "2026",
-    description: "High-yield conceptual notes covering Fundamental Rights, DPSP, Parliament, Judicial Review, and Constitutional Amendments.",
-    filePath: getAssetUrl("/brochures/academy-brochure.pdf"),
-    fileName: "indian-polity-foundations.pdf",
-    fileSize: "3.4 MB",
-    isPublished: true,
-    downloadCount: 310,
-  },
-  {
-    _id: "sm-4",
-    id: "sm-4",
-    title: "Karnataka History, Heritage & Unification Movement",
-    resourceType: "Study Notes",
-    examination: "KAS",
-    subject: "Karnataka General Knowledge",
-    year: "2026",
-    description: "Crucial summary notes covering Shatavahanas, Kadambas, Chalukyas, Hoysalas, Vijayanagara, and state unification.",
-    filePath: getAssetUrl("/brochures/academy-brochure.pdf"),
-    fileName: "karnataka-history-notes.pdf",
-    fileSize: "2.8 MB",
-    isPublished: true,
-    downloadCount: 265,
-  },
-  {
-    _id: "sm-5",
-    id: "sm-5",
-    title: "Geography of India & Karnataka - Map-Oriented Notes",
-    resourceType: "Study Notes",
-    examination: "UPSC",
-    subject: "Geography",
-    year: "2026",
-    description: "River systems, physiographic divisions, climate zones, minerals, and agro-ecological zones.",
-    filePath: getAssetUrl("/brochures/academy-brochure.pdf"),
-    fileName: "geography-notes.pdf",
-    fileSize: "2.4 MB",
-    isPublished: true,
-    downloadCount: 198,
-  },
-  {
-    _id: "sm-6",
-    id: "sm-6",
-    title: "Karnataka State Economic Survey & Budget Highlights 2025-26",
-    resourceType: "Study Notes",
-    examination: "KAS",
-    subject: "Indian Economy",
-    year: "2025",
-    description: "Key macroeconomic figures, state welfare guarantees, agricultural growth metrics, and industrial policy updates.",
-    filePath: getAssetUrl("/brochures/academy-brochure.pdf"),
-    fileName: "karnataka-economic-survey.pdf",
-    fileSize: "1.9 MB",
-    isPublished: true,
-    downloadCount: 221,
+    description: "Students and families at a felicitation in Mysuru."
   }
 ];
