@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Quote, ArrowRight, Landmark, Building2, ShieldCheck, GraduationCap, Feather, Play, PhoneCall, Check } from 'lucide-react';
+import { MapPin, Quote, ArrowRight, Landmark, Building2, ShieldCheck, GraduationCap, Feather, Play, PhoneCall, Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { openEnquiry } from './Enquire';
 import { LeadForm } from './LeadForm';
 import { getAssetUrl, ACADEMY_INFO, INITIAL_FACULTY, getWhatsAppLink } from '../../utils/constants';
@@ -201,16 +201,75 @@ export const Teachers = ({ items = INITIAL_FACULTY }) => (
       </div>
     </div>
     <h3 className="tgrid-h">Subject teachers</h3>
-    <div className="tgrid">
-      {items.map(f => (
-        <figure key={f.id} className="tcard">
-          <img src={f.image} alt={f.name} width="280" height="350" loading="lazy" decoding="async" />
-          <figcaption><b>{f.name}</b><span className="tc-sub">{f.specialization}</span><span className="tc-role">{f.role}</span></figcaption>
-        </figure>
-      ))}
-    </div>
+    <TeacherRow items={items} />
   </>
 );
+
+// One swipeable row of round teacher portraits (scroll-snap; mouse drag + arrows on desktop; pop-in on first view).
+const TeacherRow = ({ items }) => {
+  const ref = useRef(null);
+  const [ends, setEnds] = useState([true, false]);
+  const [pop, setPop] = useState('');
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return undefined;
+    const upd = () => setEnds([el.scrollLeft < 8, el.scrollLeft + el.clientWidth > el.scrollWidth - 8]);
+    upd();
+    el.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd);
+    let io;
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const r = el.getBoundingClientRect();
+    if (!calm && 'IntersectionObserver' in window && r.top > window.innerHeight) {
+      setPop('pre');
+      io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setPop('in'); io.disconnect(); } }, { threshold: 0.25 });
+      io.observe(el);
+    }
+    return () => { el.removeEventListener('scroll', upd); window.removeEventListener('resize', upd); io && io.disconnect(); };
+  }, []);
+  const go = (d) => {
+    const el = ref.current;
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollBy({ left: d * el.clientWidth * 0.75, behavior: calm ? 'auto' : 'smooth' });
+  };
+  // Mouse drag to scroll (touch and trackpads scroll natively).
+  const drag = useRef(null);
+  const down = (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag.current = { x: e.clientX, s: ref.current.scrollLeft, moved: false };
+  };
+  const move = (e) => {
+    const d = drag.current;
+    if (!d) return;
+    const dx = e.clientX - d.x;
+    if (!d.moved && Math.abs(dx) > 5) { d.moved = true; ref.current.classList.add('dragging'); }
+    if (d.moved) ref.current.scrollLeft = d.s - dx;
+  };
+  const up = () => {
+    if (!drag.current) return;
+    drag.current = null;
+    const el = ref.current;
+    const x = el.scrollLeft;
+    el.classList.remove('dragging');
+    el.scrollLeft = x; // re-snap gently from where the drag stopped
+  };
+  return (
+    <div className={`trow-wrap${ends[0] ? ' at-start' : ''}${ends[1] ? ' at-end' : ''}`}>
+      <button type="button" className="trow-nav prev" aria-label="Previous teachers" onClick={() => go(-1)} disabled={ends[0]}><ChevronLeft size={20} /></button>
+      <ul className={`trow ${pop}`} ref={ref} tabIndex={0} aria-label="Subject teachers, swipe to see all"
+        onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerLeave={up} onDragStart={e => e.preventDefault()}>
+        {items.map((f, i) => (
+          <li key={f.id} className="tcir" style={{ '--i': i }}>
+            <span className="tcir-ph"><img src={web(`tc-${f.image.split('/').pop()}`)} alt={f.name} width="320" height="320" loading="lazy" decoding="async" draggable="false" /></span>
+            <b>{f.name}</b>
+            <span className="tcir-sub">{f.specialization}</span>
+          </li>
+        ))}
+      </ul>
+      <button type="button" className="trow-nav next" aria-label="Next teachers" onClick={() => go(1)} disabled={ends[1]}><ChevronRight size={20} /></button>
+    </div>
+  );
+};
 
 // One large testimonial quote with a photo.
 export const Testimonial = ({ a }) => (
