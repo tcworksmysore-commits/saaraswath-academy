@@ -150,6 +150,21 @@ User: "the teachers should come after the students... then the courses". User ch
 - `images/faculty/sri-sandhya-g-s.webp`: bottom 15% cropped to remove a passport name/date stamp (shows on /faculty too).
 - Checked 375 + 1280 on the built site: no console errors, no horizontal scroll.
 
+## Phase 5c done (2026-11-25, commits fdcbd66, b484291)
+User: "the teachers, slidable single bar... circle pop... do other things also nicely". Choices: founder card stays above;
+swipe + arrows (no auto-slide); name + subject under each circle; polish = "you decide".
+- **Teacher row (`TeacherRow` in Visual.jsx, CSS `.trow-wrap/.trow/.tcir` in polish.css):** one scroll-snap row, touch/trackpad
+  native, mouse drag, 44px prev/next arrows from 860px (hidden at the ends), edge fade, gold ring, lift on hover, staggered pop-in
+  the first time it scrolls into view (skipped if already in view or prefers-reduced-motion). Circles 104px phone / 132px desktop.
+- **Circle crops:** `client/scripts/make_circles.py` makes 320px `public/images/web/tc-<faculty file>.webp` (per-photo crop
+  overrides in `FIX`; no face detector in this OpenCV build). Rerun it when a faculty photo changes. Also used by `FacultyRow`
+  (course landings) and the /faculty cards (now round, ringed, Fraunces names, subject colour `--accent-ink` for contrast).
+- **Polish:** 40px+ tap areas on breadcrumbs, footer links/brochure button, form fine print, contact links (negative margins, no
+  layout shift); why-cards, form title and "Prefer to talk first?" now Fraunces; header/footer logo -> `academy-logo-120.webp` (5 KB).
+- The f64d007 Pages deploy had failed at `deploy-pages` (build fine, transient); the 5c push redeployed everything.
+- Checked 375 + 1280 on the built site (home, courses, IAS/KAS landings, faculty, about, contact, articles): no console errors,
+  no horizontal scroll. Not done: inner-page heroes still do not preload their photo.
+
 ## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
 - /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
