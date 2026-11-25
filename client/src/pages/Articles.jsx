@@ -11,13 +11,15 @@ import { sortedArticles, articleBySlug } from '../data/articles';
 import { LANDINGS } from '../data/courses';
 import NotFound from './NotFound';
 
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const OG = { UPSC: 'ias', KAS: 'kas', PSI: 'psi' }; // share image per exam (falls back to 'home')
+const MONTHS =['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const fmt = (d) => { const [y, m, day] = d.split('-'); return `${+day} ${MONTHS[+m - 1]} ${y}`; };
 
-const Card = ({ a }) => (
+// top: card sits directly under the page h1 (list page), so its title is an h2 styled as h3.
+const Card = ({ a, top }) => (
   <Link to={`/articles/${a.slug}`} className="card art">
     <span className="cat">{a.category} · {a.exam}</span>
-    <h3>{a.title}</h3>
+    {top ? <h2 className="h3">{a.title}</h2> : <h3>{a.title}</h3>}
     <p>{a.description}</p>
     <span className="more"><CalendarDays size={14} /> {fmt(a.date)} <span style={{ marginLeft: 'auto' }}>Read <ArrowRight size={15} /></span></span>
   </Link>
@@ -28,14 +30,14 @@ export const Articles = () => {
   return (
     <PageLayout>
       <SEO
-        title="UPSC & KAS Exam Updates and Strategy Guides"
-        description="UPSC, KPSC KAS and Karnataka PSI exam updates, dates, syllabus and simple strategy guides from Saaraswath IAS/KAS Academy, Mysuru."
+        title="UPSC, KAS & PSI Exam Updates and Guides"
+        description="UPSC, KPSC KAS and Karnataka PSI exam dates, syllabus and simple strategy guides from Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru."
         crumbs={[['Articles', '/articles']]}
       />
       <PageHero photo={PHOTOS.studyHall} crumbs={[['Articles']]} title="Exam updates and guides" text="Dates, syllabus and simple strategy for UPSC, KAS and PSI aspirants. We check facts against the official notifications." />
       <section className="sec">
         <div className="wrap">
-          <div className="grid g3">{list.map(a => <Card key={a.slug} a={a} />)}</div>
+          <div className="grid g3">{list.map(a => <Card key={a.slug} a={a} top />)}</div>
         </div>
       </section>
       <CtaBand />
@@ -56,7 +58,9 @@ export const Article = () => {
         title={a.title}
         description={a.description}
         crumbs={[['Articles', '/articles'], [a.title, path]]}
-        jsonLd={articleLd({ title: a.title, description: a.description, path, date: a.date, updated: a.updated })}
+        jsonLd={articleLd({ title: a.title, description: a.description, path, date: a.date, updated: a.updated, image: OG[a.exam] })}
+        image={OG[a.exam]}
+        type="article"
       />
       <article className="sec art-page">
         <div className="wrap art-grid">

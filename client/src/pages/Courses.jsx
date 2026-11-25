@@ -12,7 +12,7 @@ import { landingByCourseId } from '../data/courses';
 export const Courses = () => (
   <PageLayout>
     <SEO
-      title="Courses: UPSC, KAS, PSI, Degree Foundation, Kannada Optional"
+      title="IAS, KAS & PSI Courses in Mysuru"
       description="Courses at Saaraswath IAS/KAS Academy, Mysuru: UPSC Civil Services, KPSC KAS, Karnataka PSI/PC, a 3-year degree foundation and Kannada Literature optional."
       crumbs={[['Courses', '/courses']]}
     />

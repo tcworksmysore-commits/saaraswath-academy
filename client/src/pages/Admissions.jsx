@@ -22,11 +22,11 @@ export const Admissions = () => {
   return (
     <PageLayout>
       <SEO
-        title="Admissions"
+        title="Admissions: Join IAS, KAS & PSI Coaching"
         description="How to join Saaraswath IAS/KAS Academy, Mysuru: free counselling, batch selection, registration. UPSC, KAS, PSI/PC and degree foundation batches."
         crumbs={[['Admissions', '/admissions']]}
       />
-      <PageHero photo={PHOTOS.classroomB} crumbs={[['Admissions']]} title="Admissions" text="Joining takes four simple steps. It starts with a free conversation." />
+      <PageHero photo={PHOTOS.classroomB} crumbs={[['Admissions']]} title="Admissions: Join IAS, KAS & PSI Coaching" text="Joining takes four simple steps. It starts with a free conversation." />
       <section className="sec">
         <div className="wrap contact-grid">
           <div className="lead-card">

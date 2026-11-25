@@ -21,7 +21,7 @@ export const Footer = () => (
           <Socials />
         </div>
         <div>
-          <h4>Courses</h4>
+          <h2>Courses</h2>
           <ul>
             <li><Link to="/ias-coaching-in-mysuru">IAS coaching in Mysuru</Link></li>
             <li><Link to="/kas-coaching-in-mysuru">KAS coaching in Mysuru</Link></li>
@@ -31,7 +31,7 @@ export const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4>Academy</h4>
+          <h2>Academy</h2>
           <ul>
             <li><Link to="/about">About us</Link></li>
             <li><Link to="/faculty">Faculty</Link></li>
@@ -41,7 +41,7 @@ export const Footer = () => (
           </ul>
         </div>
         <div>
-          <h4>Visit / Call</h4>
+          <h2>Visit / Call</h2>
           <ul>
             <li style={{ display: 'flex', gap: 8 }}><MapPin size={18} style={{ flex: 'none', marginTop: 3 }} /><a href={ACADEMY_INFO.mapsUrl} target="_blank" rel="noopener noreferrer">{ACADEMY_INFO.address}</a></li>
             {ACADEMY_INFO.phoneNumbers.map(n => (

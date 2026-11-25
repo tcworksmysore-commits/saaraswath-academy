@@ -1,6 +1,8 @@
 import React from 'react';
 import { PageLayout } from '../components/layout/PageLayout';
-import { SEO } from '../components/common/SEO';
+import { Link } from 'react-router-dom';
+import { SEO, founderLd } from '../components/common/SEO';
+import { LANDINGS } from '../data/courses';
 import { PageHero, CtaBand } from '../components/common/Blocks';
 import { PHOTOS } from '../components/common/Visual';
 import { ACADEMY_INFO, INITIAL_FACULTY } from '../utils/constants';
@@ -8,15 +10,16 @@ import { ACADEMY_INFO, INITIAL_FACULTY } from '../utils/constants';
 export const Faculty = () => (
   <PageLayout>
     <SEO
-      title="Faculty"
-      description={`Meet the faculty of Saaraswath IAS/KAS Academy, Mysuru: ${ACADEMY_INFO.founder} and subject teachers for history, polity, geography, economy, current affairs and CSAT.`}
+      title="Faculty: IAS & KAS Teachers in Mysuru"
+      description={`IAS and KAS faculty of Saaraswath Academy, Kuvempunagar, Mysuru: ${ACADEMY_INFO.founder} and teachers for history, polity, geography, economy, current affairs and CSAT.`}
       crumbs={[['Faculty', '/faculty']]}
+      jsonLd={founderLd()}
     />
     <PageHero photo={PHOTOS.seminar} crumbs={[['Faculty']]} title="Our faculty" text="Subject teachers who teach in Kannada and English, led by the founder." />
     <section className="sec">
       <div className="wrap">
         <div className="card fac fac-lead">
-          <img src={ACADEMY_INFO.founderPhoto} alt={ACADEMY_INFO.founder} width="160" height="200" loading="lazy" />
+          <img src={ACADEMY_INFO.founderPhoto} alt={`${ACADEMY_INFO.founder}, ${ACADEMY_INFO.founderTitle}, Saaraswath IAS/KAS Academy`} width="160" height="200" loading="lazy" />
           <div>
             <h2 className="h3">{ACADEMY_INFO.founder}</h2>
             <div className="spec">{ACADEMY_INFO.founderTitle}</div>
@@ -26,7 +29,7 @@ export const Faculty = () => (
         <div className="grid g3" style={{ marginTop: 16 }}>
           {INITIAL_FACULTY.map(f => (
             <article key={f.id} className="card fac">
-              <img src={f.image.replace('/images/faculty/', '/images/web/tc-')} alt={f.name} width="96" height="96" loading="lazy" decoding="async" />
+              <img src={f.image.replace('/images/faculty/', '/images/web/tc-')} alt={`${f.name}, ${f.specialization} teacher`} width="96" height="96" loading="lazy" decoding="async" />
               <div>
                 <h2 className="h3">{f.name}</h2>
                 <div className="spec">{f.specialization}</div>
@@ -35,6 +38,10 @@ export const Faculty = () => (
               </div>
             </article>
           ))}
+        </div>
+        <h2 className="h3" style={{ marginTop: 36, textAlign: 'center', fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 22 }}>Courses they teach</h2>
+        <div className="chips" style={{ marginTop: 12, justifyContent: 'center' }}>
+          {LANDINGS.map(l => <Link key={l.slug} to={`/${l.slug}`}>{l.seoTitle.split(' | ')[0]}</Link>)}
         </div>
       </div>
     </section>

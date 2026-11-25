@@ -20,7 +20,7 @@ export const Gallery = () => {
   const items = cat === 'All' ? INITIAL_GALLERY : INITIAL_GALLERY.filter(g => g.category === cat);
   return (
     <PageLayout>
-      <SEO title="Gallery" description="Classrooms, workshops and felicitations at Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru." crumbs={[['Gallery', '/gallery']]} />
+      <SEO title="Gallery: Classrooms and Events in Mysuru" description="Classrooms, workshops and felicitations at Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru." crumbs={[['Gallery', '/gallery']]} />
       <PageHero photo={PHOTOS.group} crumbs={[['Gallery']]} title="Gallery" text="Classes, workshops and student felicitations at the academy." />
       <section className="sec sec-alt">
         <div className="wrap vids-split">

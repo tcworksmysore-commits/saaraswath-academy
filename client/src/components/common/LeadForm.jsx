@@ -110,7 +110,7 @@ export const LeadForm = ({ variant = 'short', course = '', title, subtitle, form
     return (
       <div className="ok">
         <div className="tick"><CheckCircle2 size={36} /></div>
-        <h3>Thank you, {f.name.trim().split(' ')[0]}</h3>
+        <h2>Thank you, {f.name.trim().split(' ')[0]}</h2>
         {viaWa
           ? <p>{brochure ? 'Your brochure is downloading. ' : ''}WhatsApp has opened with your details. Please tap <b>Send</b> there so the message reaches us.</p>
           : <p>{brochure ? 'Your brochure is downloading. ' : ''}We have your details and will reach you on {fmt(phone)}.</p>}
@@ -125,7 +125,7 @@ export const LeadForm = ({ variant = 'short', course = '', title, subtitle, form
 
   return (
     <form className="lf" onSubmit={submit} noValidate>
-      {title && <div><h3>{title}</h3>{subtitle && <p className="sub" style={{ margin: '4px 0 2px' }}>{subtitle}</p>}</div>}
+      {title && <div><h2>{title}</h2>{subtitle && <p className="sub" style={{ margin: '4px 0 2px' }}>{subtitle}</p>}</div>}
       <label>Full name
         <input className={err.name ? 'bad' : ''} value={f.name} onChange={set('name')} autoComplete="name" placeholder="Your name" />
         {err.name && <span className="err">{err.name}</span>}

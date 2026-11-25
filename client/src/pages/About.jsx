@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Users, PenLine, Languages, MapPin } from 'lucide-react';
 import { PageLayout } from '../components/layout/PageLayout';
-import { SEO } from '../components/common/SEO';
+import { SEO, founderLd } from '../components/common/SEO';
 import { openEnquiry } from '../components/common/Enquire';
 import { PageHero, SecHead, CtaBand } from '../components/common/Blocks';
 import { PHOTOS } from '../components/common/Visual';
@@ -18,9 +18,10 @@ const VALUES = [
 export const About = () => (
   <PageLayout>
     <SEO
-      title="About the Academy and Founder"
+      title="About the IAS/KAS Academy and Founder, Mysuru"
       description="Saaraswath IAS/KAS Academy in Kuvempunagar, Mysuru was started in 2019 by Dr. Vasanth Kumar N to offer careful, personal coaching for UPSC, KAS and PSI aspirants."
       crumbs={[['About', '/about']]}
+      jsonLd={founderLd()}
     />
     <PageHero photo={PHOTOS.front} crumbs={[['About']]} title="About Saaraswath Academy" text="A civil services academy in Kuvempunagar, Mysuru, started in 2019." />
 

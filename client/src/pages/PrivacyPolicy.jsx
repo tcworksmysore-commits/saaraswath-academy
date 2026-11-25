@@ -6,7 +6,7 @@ import { ACADEMY_INFO } from '../utils/constants';
 
 export const PrivacyPolicy = () => (
   <PageLayout>
-    <SEO title="Privacy Policy" description="How Saaraswath IAS/KAS Academy, Mysuru uses the details you share through enquiry forms." />
+    <SEO title="Privacy Policy" description="How Saaraswath IAS/KAS Academy, Mysuru uses the details you share through enquiry forms." crumbs={[['Privacy policy', '/privacy-policy']]} />
     <PageHero title="Privacy policy" text="Last updated: November 2026" />
     <section className="sec">
       <div className="wrap prose narrow">

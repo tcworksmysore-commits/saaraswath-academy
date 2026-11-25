@@ -10,7 +10,7 @@ import { ACADEMY_INFO, getWhatsAppLink, telLink } from '../utils/constants';
 
 export const Contact = () => (
   <PageLayout>
-    <SEO title="Contact Saaraswath IAS/KAS Academy, Mysuru" description={`Call ${ACADEMY_INFO.phoneNumbers.join(', ')} or visit us at ${ACADEMY_INFO.address}.`} />
+    <SEO title="Contact: IAS & KAS Coaching, Kuvempunagar" description={`Call +91 ${ACADEMY_INFO.phoneNumbers[0]} or visit Saaraswath IAS/KAS Academy, Panchamantra Road, Kuvempunagar, Mysuru 570023, for IAS, KAS and PSI coaching.`} crumbs={[['Contact', '/contact']]} />
     <PageHero photo={PHOTOS.front} crumbs={[['Contact']]} title="Contact us" text="Call, WhatsApp or visit our centre in Kuvempunagar, Mysuru. Or leave your number and we will call you back." />
     <section className="sec">
       <div className="wrap contact-grid">

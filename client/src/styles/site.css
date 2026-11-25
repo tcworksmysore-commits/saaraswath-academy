@@ -99,7 +99,7 @@ img { content-visibility: auto; }
 @media (min-width: 600px) { .lead-card { padding: 28px; } }
 .lead-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; border-radius: 20px 20px 0 0;
   background: linear-gradient(90deg, var(--navy-2), var(--blue), var(--gold-2)); }
-.lead-card h3 { font-size: 20px; color: var(--navy); }
+.lead-card h3, .lead-card h2, .lf h2 { font-size: 20px; color: var(--navy); }
 .lead-card .sub { color: var(--muted); font-size: 14px; margin: 4px 0 16px; }
 .lf { display: grid; gap: 12px; }
 .lf label { display: grid; gap: 5px; font-size: 13px; font-weight: 700; color: var(--ink); }
@@ -204,7 +204,7 @@ img { content-visibility: auto; }
 @media (min-width: 900px) { .ftr { padding-bottom: 28px; } }
 .ftr-grid { display: grid; gap: 28px; }
 @media (min-width: 768px) { .ftr-grid { grid-template-columns: 1.4fr 1fr 1fr 1.3fr; } }
-.ftr h4 { color: #fff; font-size: 15px; margin-bottom: 12px; }
+.ftr h2 { color: #fff; font-size: 15px; margin-bottom: 12px; }
 .ftr a { color: #e6ecf7; }
 .ftr a:hover { color: var(--gold-2); }
 .ftr ul { list-style: none; display: grid; gap: 8px; }

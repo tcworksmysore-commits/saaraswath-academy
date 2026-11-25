@@ -6,7 +6,7 @@ import { ACADEMY_INFO } from '../utils/constants';
 
 export const Terms = () => (
   <PageLayout>
-    <SEO title="Terms of Use" description="Terms of use of the Saaraswath IAS/KAS Academy, Mysuru website." />
+    <SEO title="Terms of Use" description="Terms of use of the Saaraswath IAS/KAS Academy, Mysuru website: exam information, courses, enquiries and links to official sites." crumbs={[['Terms of use', '/terms']]} />
     <PageHero title="Terms of use" text="Last updated: November 2026" />
     <section className="sec">
       <div className="wrap prose narrow">

@@ -33,7 +33,7 @@ export const Home = () => (
   <PageLayout>
     <SEO
       fullTitle="IAS & KAS Coaching in Mysuru | Saaraswath IAS/KAS Academy"
-      description="Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru: UPSC Civil Services, KPSC KAS, PSI/PC coaching in Kannada & English. Get a free call back from a mentor."
+      description="Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru: UPSC Civil Services, KPSC KAS, PSI/PC coaching in Kannada and English. Get a free call back. ಮೈಸೂರಿನಲ್ಲಿ ಐಎಎಸ್, ಕೆಎಎಸ್ ತರಬೇತಿ."
       jsonLd={faqLd(FAQS)}
       preload="academy-front"
     />
