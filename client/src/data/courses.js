@@ -21,6 +21,10 @@ export const LANDINGS = [
       'Aspirants from Mysuru, Mandya, Hassan, Chamarajanagar and Kodagu who would rather not move to Bengaluru or Delhi',
       'Repeaters who want their answers evaluated and a clear plan for the next attempt',
     ],
+    waitIf: [
+      'You are in your first or second year of degree: the Degree foundation course will suit you better for now',
+      'You cannot give the exam steady daily study time for the next year or so',
+    ],
     youGet: [
       ['General Studies for Prelims', 'History, polity, geography, economy, environment and science, taught from NCERTs up to standard references.'],
       ['CSAT practice', 'Comprehension, reasoning and basic numeracy, so the qualifying paper never becomes a worry.'],
@@ -63,6 +67,10 @@ export const LANDINGS = [
       'Kannada-medium aspirants who want to write Mains in Kannada',
       'Candidates who cleared Prelims before and want structured Mains practice',
     ],
+    waitIf: [
+      'You have not yet checked your eligibility (degree, age limit) in the official KPSC notification',
+      'You are still in the early years of degree: start with the Degree foundation course instead',
+    ],
     youGet: [
       ['Karnataka-focused GS', 'History of Karnataka, its geography, economy, polity and culture, alongside the national syllabus.'],
       ['Prelims practice', 'Topic tests and full-length mocks for both Prelims papers.'],
@@ -103,6 +111,10 @@ export const LANDINGS = [
       'PUC-qualified candidates preparing for Police Constable recruitment',
       'Candidates who want a disciplined routine with frequent tests',
     ],
+    waitIf: [
+      'You are not sure you meet the age, height or education rules: check the official notification first, or ask us',
+      'You are not ready to prepare for the physical tests alongside the written exam',
+    ],
     youGet: [
       ['Descriptive paper practice', 'Essay, precis writing and English–Kannada translation, evaluated regularly.'],
       ['General studies', 'History, polity, geography, economy, science and current affairs for the objective paper.'],
@@ -141,6 +153,10 @@ export const LANDINGS = [
       'Students who want to finish the basics before graduation',
       'Parents looking for a structured, low-pressure start for their son or daughter',
     ],
+    waitIf: [
+      'Your college timetable leaves no evenings or weekends free this year',
+      'You have already graduated: the full IAS or KAS course will move faster for you',
+    ],
     youGet: [
       ['NCERT foundation', 'History, geography, polity, economy and science from NCERT books, taught in order.'],
       ['Newspaper habit', 'How to read a newspaper for the exam, and how to make short notes.'],
@@ -178,6 +194,10 @@ export const LANDINGS = [
       'UPSC aspirants who have chosen, or are considering, Kannada Literature',
       'KAS aspirants preparing the Kannada optional',
       'Students who enjoy Kannada literature and want to know if it suits them',
+    ],
+    waitIf: [
+      'You have not read much Kannada literature yet and are choosing it only on advice from others: talk to us first',
+      'You have not started General Studies yet: most aspirants pick the optional after the basics are in place',
     ],
     youGet: [
       ['History of language and literature', 'Halegannada, Nadugannada and Hosagannada periods, movements and major writers.'],

@@ -17,7 +17,7 @@ export const Crumbs = ({ items }) => (
   </nav>
 );
 
-// photo: one of PHOTOS from Visual.jsx; shown as a framed, tilted card beside the title.
+// photo: one of PHOTOS from Visual.jsx; shown as a straight framed card beside the title.
 export const PageHero = ({ title, text, crumbs, kn, photo, children }) => (
   <section className={`page-hero${photo ? ' ph-photo' : ''}`}>
     <span className="blob b1" aria-hidden="true" /><span className="blob b2" aria-hidden="true" />

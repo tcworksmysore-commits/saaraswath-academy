@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import {
   CheckCircle2, Phone, Sun, Moon, CalendarDays, MapPin, ArrowRight, BookOpen, Landmark, Calculator, PenLine, Newspaper,
   Compass, Mic, Languages, ClipboardCheck, Brain, Timer, Dumbbell, ScrollText, Library, Lightbulb, MessagesSquare,
-  UserCheck, Presentation, RefreshCw, Feather, Target, Users,
+  UserCheck, Presentation, RefreshCw, Feather, Target, Users, Info,
 } from 'lucide-react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO, faqLd, courseLd } from '../components/common/SEO';
@@ -11,7 +11,7 @@ import { LeadForm, COURSE_OPTIONS } from '../components/common/LeadForm';
 import { openEnquiry } from '../components/common/Enquire';
 import { BrandIcon } from '../components/common/Brand';
 import { Crumbs, SecHead, CtaBand, Faq, AchieverGrid } from '../components/common/Blocks';
-import { PhotoStack, PHOTOS, Timeline, Flow, FacultyRow, Testimonial, GalleryStrip, StickyCta, MoreLink } from '../components/common/Visual';
+import { PhotoStack, PHOTOS, Timeline, Flow, FacultyRow, Testimonial, GalleryStrip, StickyCta, MoreLink, VideoPair, CallbackCard } from '../components/common/Visual';
 import { LANDINGS, landingBySlug, landingByCourseId } from '../data/courses';
 import { articleBySlug } from '../data/articles';
 import { ACADEMY_INFO, INITIAL_ACHIEVERS, getWhatsAppLink, telLink } from '../utils/constants';
@@ -98,7 +98,12 @@ export const CourseLanding = ({ slug }) => {
         <div className="wrap split">
           <div className="rv">
             <SecHead tag="Who it is for" title="Is this course right for you?" />
+            <p className="fit-h">Right for you if</p>
             <ul className="checks checks-card">{l.whoFor.map(w => <li key={w}><CheckCircle2 size={20} /> {w}</li>)}</ul>
+            {l.waitIf && <>
+              <p className="fit-h">You may want to wait if</p>
+              <ul className="waits">{l.waitIf.map(w => <li key={w}><Info size={18} /> {w}</li>)}</ul>
+            </>}
             <p className="note"><Users size={18} /> Not sure? In a free counselling call we will listen to your situation and give you an honest suggestion about the right exam and course.</p>
           </div>
           <div className="card batch batch-x rv">
@@ -141,6 +146,10 @@ export const CourseLanding = ({ slug }) => {
         </div>
       </section>
 
+      <section className="sec">
+        <div className="wrap"><CallbackCard course={course} form={`${l.exam}-callback`} /></div>
+      </section>
+
       <section className="sec sec-cream">
         <div className="wrap founder founder-x">
           <figure className="frame f-portrait rv">
@@ -175,8 +184,11 @@ export const CourseLanding = ({ slug }) => {
 
       <section className="sec sec-alt">
         <div className="wrap">
-          <SecHead tag="Inside the academy" title="Where you will study" text="Classrooms, a quiet study hall and the programmes we hold through the year, at Kuvempunagar, Mysuru." />
-          <GalleryStrip />
+          <div className="vids-split">
+            <SecHead tag="Inside the academy" title="Where you will study" text="Classrooms, a quiet study hall and the programmes we hold through the year, at Kuvempunagar, Mysuru. Take a short video walk through, or hear from one of our teachers." />
+            <VideoPair />
+          </div>
+          <div style={{ marginTop: 36 }}><GalleryStrip /></div>
           <MoreLink to="/gallery">Open the gallery</MoreLink>
         </div>
       </section>

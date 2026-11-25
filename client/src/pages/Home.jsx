@@ -4,11 +4,11 @@ import { CheckCircle2, Clock, MapPin, Users, BookOpen, PenLine, Languages, Calen
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO, faqLd } from '../components/common/SEO';
 import { sortedArticles } from '../data/articles';
-import { landingByCourseId } from '../data/courses';
+import { landingByCourseId, LANDINGS } from '../data/courses';
 import { LeadForm } from '../components/common/LeadForm';
 import { openEnquiry } from '../components/common/Enquire';
 import { BrandIcon } from '../components/common/Brand';
-import { PhotoStack, PHOTOS, FacultyRow, GalleryStrip, MoreLink } from '../components/common/Visual';
+import { PhotoStack, PHOTOS, FacultyRow, GalleryStrip, MoreLink, ExamTiles, ResultsStrip, VideoPair, CallbackCard } from '../components/common/Visual';
 import { ACADEMY_INFO, INITIAL_COURSES, INITIAL_ACHIEVERS, getWhatsAppLink, telLink } from '../utils/constants';
 
 const YT_UPLOADS = 'UUOMaPN30n6XB7h34Kac75oA'; // uploads playlist of @Saaraswath.Mysore
@@ -89,6 +89,27 @@ export const Home = () => (
       </div>
     </section>
 
+    {/* Choose your exam */}
+    <section className="sec exam-sec">
+      <div className="wrap">
+        <h2 className="mini-h">Which exam are you preparing for?</h2>
+        <ExamTiles items={LANDINGS} />
+      </div>
+    </section>
+
+    {/* Results, kept high on the page */}
+    <section className="sec sec-alt">
+      <div className="wrap">
+        <div className="sh">
+          <span className="tag">Results</span>
+          <h2>Our students in service</h2>
+          <p>Selections from Saaraswath classrooms in Mysuru.</p>
+        </div>
+        <ResultsStrip items={INITIAL_ACHIEVERS} />
+        <MoreLink to="/achievements">See all results</MoreLink>
+      </div>
+    </section>
+
     {/* Courses */}
     <section className="sec">
       <div className="wrap">
@@ -125,30 +146,8 @@ export const Home = () => (
       </div>
     </section>
 
-    {/* Results */}
-    <section className="sec sec-alt">
-      <div className="wrap">
-        <div className="sh">
-          <span className="tag">Results</span>
-          <h2>Our students in service</h2>
-          <p>Selections from Saaraswath classrooms in Mysuru.</p>
-        </div>
-        <div className="scroller">
-          {INITIAL_ACHIEVERS.map(a => (
-            <figure key={a.id} className="card ach">
-              <img src={a.image} alt={a.name} loading="lazy" decoding="async" width="300" height="375" />
-              <h3>{a.name}</h3>
-              <div className="ex">{a.exam}</div>
-              <q>{a.quote}</q>
-            </figure>
-          ))}
-        </div>
-        <p style={{ textAlign: 'center', marginTop: 16 }}><Link className="b b-line" to="/achievements">See all results</Link></p>
-      </div>
-    </section>
-
     {/* Why */}
-    <section className="sec">
+    <section className="sec sec-alt">
       <div className="wrap">
         <div className="sh">
           <span className="tag">Why Saaraswath</span>
@@ -160,6 +159,11 @@ export const Home = () => (
           ))}
         </div>
       </div>
+    </section>
+
+    {/* Call back */}
+    <section className="sec">
+      <div className="wrap"><CallbackCard form="home-callback" /></div>
     </section>
 
     {/* Founder */}
@@ -186,8 +190,11 @@ export const Home = () => (
         <div className="sh"><span className="tag">The teaching team</span><h2>Teachers you will learn from</h2><p>Subject teachers for history, polity, geography, economy, science, current affairs and aptitude, with the founder as your mentor.</p></div>
         <FacultyRow />
         <MoreLink to="/faculty">Meet the faculty</MoreLink>
-        <div className="sh" style={{ marginTop: 56 }}><span className="tag">Inside the academy</span><h2>A quiet place to study in Mysuru</h2></div>
-        <GalleryStrip />
+        <div className="vids-split" style={{ marginTop: 56 }}>
+          <div className="sh"><span className="tag">Inside the academy</span><h2>A quiet place to study in Mysuru</h2><p>Take a short walk through the classrooms and study hall, and hear from one of our teachers.</p></div>
+          <VideoPair />
+        </div>
+        <div style={{ marginTop: 36 }}><GalleryStrip /></div>
         <MoreLink to="/gallery">Open the gallery</MoreLink>
       </div>
     </section>

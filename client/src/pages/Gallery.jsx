@@ -3,7 +3,7 @@ import { X } from 'lucide-react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO } from '../components/common/SEO';
 import { PageHero, CtaBand } from '../components/common/Blocks';
-import { PHOTOS } from '../components/common/Visual';
+import { PHOTOS, VideoPair } from '../components/common/Visual';
 import { INITIAL_GALLERY } from '../utils/constants';
 
 const CATS = ['All', 'Classroom', 'Workshops', 'Achievements', 'Students'];
@@ -22,6 +22,12 @@ export const Gallery = () => {
     <PageLayout>
       <SEO title="Gallery" description="Classrooms, workshops and felicitations at Saaraswath IAS/KAS Academy, Kuvempunagar, Mysuru." crumbs={[['Gallery', '/gallery']]} />
       <PageHero photo={PHOTOS.group} crumbs={[['Gallery']]} title="Gallery" text="Classes, workshops and student felicitations at the academy." />
+      <section className="sec sec-alt">
+        <div className="wrap vids-split">
+          <div className="sh"><span className="tag">Videos</span><h2>See the academy</h2><p>A short walk through the classrooms and study hall, and a few words from one of our teachers.</p></div>
+          <VideoPair />
+        </div>
+      </section>
       <section className="sec">
         <div className="wrap">
           <div className="chips" style={{ justifyContent: 'center', marginBottom: 20 }}>
