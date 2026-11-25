@@ -165,6 +165,28 @@ swipe + arrows (no auto-slide); name + subject under each circle; polish = "you 
 - Checked 375 + 1280 on the built site (home, courses, IAS/KAS landings, faculty, about, contact, articles): no console errors,
   no horizontal scroll. Not done: inner-page heroes still do not preload their photo.
 
+## Phase 5d done (2026-11-25, commits 4cdfaa3, 494bd11, bfc2aef)
+User: "this beard guy, too down, fix it ... do the best seo optimization as possible". Answers: keep github.io (no domain yet),
+no Search Console code yet, no GBP link/hours (never guess hours), Kannada phrase in descriptions (no /kn/ pages).
+- **Raghu circle:** `FIX['sri-raghu-m-raj.webp'] = (0.505, 0.325, 0.5)`; face now centred and the same size as the other 9.
+- **Schema:** index.html has `WebSite` + `EducationalOrganization/LocalBusiness` with `@id` `<site>/#org` (NAP, founder `#founder`,
+  knowsLanguage en/kn, photo images; `priceRange` removed). SEO.jsx: `founderLd()` (Person, on /about + /faculty), Course with
+  Place+PostalAddress location and instructor, Article with og image 1200x630 + inLanguage, `ORG` refs carry the `@id`.
+- **Head:** per-page twitter:title/description/image and og:type (`type="article"` on articles); 404 has no canonical/og:url;
+  titles auto-shorten to <= 65 chars (brand suffix "| Saaraswath Academy Mysuru", then "| Saaraswath Academy", then none).
+- **CWV:** `PageHero` registers its photo in `headStore.preload` during pre-render (with its own sizes), so every inner hero is
+  preloaded with fetchpriority=high. SEO `preload` is now `{k, sizes}` internally (pages still pass the key string).
+- **Copy:** local-intent titles/descriptions on all pages (Kuvempunagar, Mysuru); Kannada lines (from the on-page `kn` text) in the
+  Home + 5 landing descriptions. Landing title first segments unchanged (they are reused as link labels).
+- **Headings:** LeadForm title + thank-you and footer column titles are `h2` (CSS selectors moved, sizes unchanged); /articles cards
+  are `h2.h3`. Audit: every route has one h1, no level skips, no img without alt, all JSON-LD parses.
+- **Links:** /faculty has "Courses they teach" chips to the 5 landings; faculty photos have descriptive alts.
+- **sitemap:** lastmod = article date; /articles = newest article; other pages = build date.
+- Left as is (rules): "Best time" form chip; one achiever quote says "top rank" (results cards are not to be changed).
+- Audit script used: side-session notes `seo_audit.mjs` (`node seo_audit.mjs client/dist`).
+- User to-dos for SEO: verify Search Console (HTML tag) and submit sitemap.xml; create/claim the Google Business Profile with the
+  same NAP and link the site; then send the GBP link + real hours to add to the schema.
+
 ## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
 - /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
