@@ -183,6 +183,35 @@ export const FacultyRow = ({ items = INITIAL_FACULTY }) => (
   </div>
 );
 
+// Home "Your teachers": founder as a large mentor card, then every subject teacher as a portrait card.
+export const Teachers = ({ items = INITIAL_FACULTY }) => (
+  <>
+    <div className="mentor">
+      <figure className="mentor-ph"><img src={ACADEMY_INFO.founderPhoto} alt={ACADEMY_INFO.founder} width="420" height="420" loading="lazy" decoding="async" /></figure>
+      <div className="mentor-tx">
+        <span className="mentor-k">Your mentor</span>
+        <h3>{ACADEMY_INFO.founder}</h3>
+        <div className="mentor-r">{ACADEMY_INFO.founderTitle}, Saaraswath IAS/KAS Academy</div>
+        <p>{ACADEMY_INFO.founderExperience}</p>
+        <p>{ACADEMY_INFO.founderBio}</p>
+        <div className="hero-actions">
+          <button className="b b-gold" onClick={() => openEnquiry({ form: 'founder' })}>Get a call back</button>
+          <Link className="b b-line" to="/about">About the academy</Link>
+        </div>
+      </div>
+    </div>
+    <h3 className="tgrid-h">Subject teachers</h3>
+    <div className="tgrid">
+      {items.map(f => (
+        <figure key={f.id} className="tcard">
+          <img src={f.image} alt={f.name} width="280" height="350" loading="lazy" decoding="async" />
+          <figcaption><b>{f.name}</b><span className="tc-sub">{f.specialization}</span><span className="tc-role">{f.role}</span></figcaption>
+        </figure>
+      ))}
+    </div>
+  </>
+);
+
 // One large testimonial quote with a photo.
 export const Testimonial = ({ a }) => (
   <figure className="testi">

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Clock, MapPin, Users, BookOpen, PenLine, Languages, CalendarClock, MessagesSquare, Download, Phone } from 'lucide-react';
+import { CheckCircle2, Clock, MapPin, Users, BookOpen, PenLine, Languages, CalendarClock, MessagesSquare, Download, Phone, ArrowRight } from 'lucide-react';
 import { PageLayout } from '../components/layout/PageLayout';
 import { SEO, faqLd } from '../components/common/SEO';
 import { sortedArticles } from '../data/articles';
@@ -8,10 +8,8 @@ import { landingByCourseId, LANDINGS } from '../data/courses';
 import { LeadForm } from '../components/common/LeadForm';
 import { openEnquiry } from '../components/common/Enquire';
 import { BrandIcon } from '../components/common/Brand';
-import { PhotoStack, HeroCtaM, PHOTOS, FacultyRow, GalleryStrip, MoreLink, ExamTiles, ResultsStrip, VideoPair, CallbackCard } from '../components/common/Visual';
+import { PhotoStack, HeroCtaM, PHOTOS, Teachers, GalleryStrip, MoreLink, ExamTiles, ResultsStrip, VideoPair, CallbackCard } from '../components/common/Visual';
 import { ACADEMY_INFO, INITIAL_COURSES, INITIAL_ACHIEVERS, getWhatsAppLink, telLink } from '../utils/constants';
-
-const YT_UPLOADS = 'UUOMaPN30n6XB7h34Kac75oA'; // uploads playlist of @Saaraswath.Mysore
 
 const FEATURES = [
   [Users, 'Personal mentorship', `Small batches and one-to-one guidance from ${ACADEMY_INFO.founder} and subject experts.`],
@@ -30,23 +28,6 @@ const FAQS = [
   ['Can I see a class before I join?', 'Ask on your call. We will tell you plainly what is possible for your batch and how classes run.'],
   ['I am still in my degree. Is it too early?', 'No. The 3-year Degree + IAS/KAS foundation runs on weekends and evenings, so it never clashes with college.'],
 ];
-
-const YouTube = () => {
-  const [on, setOn] = useState(false);
-  return (
-    <div className="yt">
-      {on ? (
-        <iframe src={`https://www.youtube-nocookie.com/embed/videoseries?list=${YT_UPLOADS}&autoplay=1`} title="Saaraswath Academy on YouTube"
-          allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen />
-      ) : (
-        <button onClick={() => setOn(true)} aria-label="Play latest Saaraswath videos">
-          <span className="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z" /></svg></span>
-          Watch our latest classes &amp; strategy videos
-        </button>
-      )}
-    </div>
-  );
-};
 
 export const Home = () => (
   <PageLayout>
@@ -112,6 +93,19 @@ export const Home = () => (
       </div>
     </section>
 
+    {/* Your teachers, right after the students */}
+    <section className="sec sec-cream">
+      <div className="wrap">
+        <div className="sh">
+          <span className="tag">Your teachers</span>
+          <h2>The people who will teach you</h2>
+          <p>A mentor who knows you by name, and a teacher for every subject: history, polity, geography, economy, science, current affairs and aptitude.</p>
+        </div>
+        <Teachers />
+        <MoreLink to="/faculty">Meet the faculty</MoreLink>
+      </div>
+    </section>
+
     {/* Courses */}
     <section className="sec">
       <div className="wrap">
@@ -164,54 +158,21 @@ export const Home = () => (
     </section>
 
     {/* Call back */}
-    <section className="sec">
+    <section className="sec sec-tight">
       <div className="wrap"><CallbackCard form="home-callback" /></div>
     </section>
 
-    {/* Founder */}
-    <section className="sec sec-cream">
-      <div className="wrap founder founder-x">
-        <figure className="frame f-portrait rv"><img src={ACADEMY_INFO.founderPhoto} alt={ACADEMY_INFO.founder} loading="lazy" decoding="async" width="420" height="420" /></figure>
-        <div>
-          <span className="sh" style={{ margin: 0, textAlign: 'left' }}><span className="tag">Meet the founder</span></span>
-          <h2>{ACADEMY_INFO.founder}</h2>
-          <div className="role">{ACADEMY_INFO.founderTitle}, Saaraswath IAS/KAS Academy</div>
-          <p>{ACADEMY_INFO.founderExperience}</p>
-          <p>{ACADEMY_INFO.founderBio}</p>
-          <div className="hero-actions">
-            <button className="b b-gold" onClick={() => openEnquiry({ form: 'founder' })}>Get a call back</button>
-            <Link className="b b-line" to="/about">About the academy</Link>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Team + place */}
+    {/* Inside the academy: videos, photos, YouTube + Telegram in one place */}
     <section className="sec sec-deco">
       <div className="wrap">
-        <div className="sh"><span className="tag">The teaching team</span><h2>Teachers you will learn from</h2><p>Subject teachers for history, polity, geography, economy, science, current affairs and aptitude, with the founder as your mentor.</p></div>
-        <FacultyRow />
-        <MoreLink to="/faculty">Meet the faculty</MoreLink>
-        <div className="vids-split" style={{ marginTop: 56 }}>
+        <div className="vids-split">
           <div className="sh"><span className="tag">Inside the academy</span><h2>A quiet place to study in Mysuru</h2><p>Take a short walk through the classrooms and study hall, and hear from one of our teachers.</p></div>
           <VideoPair />
         </div>
         <div style={{ marginTop: 36 }}><GalleryStrip /></div>
-        <MoreLink to="/gallery">Open the gallery</MoreLink>
-      </div>
-    </section>
-
-    {/* YouTube */}
-    <section className="sec">
-      <div className="wrap">
-        <div className="sh">
-          <span className="tag">Free learning</span>
-          <h2>Learn with us on YouTube</h2>
-          <p>Strategy sessions, current affairs and class recordings from Saaraswath.</p>
-        </div>
-        <div style={{ maxWidth: 880, margin: '0 auto' }}><YouTube /></div>
-        <div className="hero-actions" style={{ justifyContent: 'center' }}>
-          <a className="b b-line" href={ACADEMY_INFO.socials.youtube} target="_blank" rel="noopener noreferrer"><BrandIcon name="youtube" /> Subscribe</a>
+        <div className="home-follow">
+          <Link className="b b-line" to="/gallery">Open the gallery <ArrowRight size={16} /></Link>
+          <a className="b b-line" href={ACADEMY_INFO.socials.youtube} target="_blank" rel="noopener noreferrer"><BrandIcon name="youtube" /> Free classes on YouTube</a>
           <a className="b b-line" href={ACADEMY_INFO.socials.telegram} target="_blank" rel="noopener noreferrer"><BrandIcon name="telegram" /> Join Telegram</a>
         </div>
       </div>
@@ -226,7 +187,7 @@ export const Home = () => (
             <Link key={a.slug} to={`/articles/${a.slug}`} className="card art rv"><span className="cat">{a.category} · {a.exam}</span><h3>{a.title}</h3><p>{a.description}</p><span className="more">Read more</span></Link>
           ))}
         </div>
-        <p style={{ textAlign: 'center', marginTop: 16 }}><Link className="b b-line" to="/articles">All articles</Link></p>
+        <MoreLink to="/articles">All articles</MoreLink>
       </div>
     </section>
 
@@ -241,7 +202,7 @@ export const Home = () => (
     </section>
 
     {/* Final CTA */}
-    <section className="sec">
+    <section className="sec sec-tight">
       <div className="wrap">
         <div className="band">
           <div>
