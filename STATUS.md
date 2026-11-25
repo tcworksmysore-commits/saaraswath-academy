@@ -84,6 +84,21 @@ User choices: hero = photo collage (place photo + founder portrait), serif displ
 - Motion: CSS only (load rise + scroll reveal where `animation-timeline` is supported); reduced-motion turns it off.
 - Checked 375 + 1280, built pages hydrate with no console errors, no horizontal scroll.
 
+## Phase 4 design round 2 done (2026-11-25)
+User feedback: "tilted image not good… refer the best website in this category". Research note (Vision, Drishti, Vajiram,
+Insights, NEXT IAS, ForumIAS): side-session notes `design_round2_findings.md`. User choices: big photo + mentor card hero,
+all 4 upgrades, inner heroes text-left/photo-right, **clean sans headings** (Fraunces removed; `--font-display` = Plus Jakarta Sans 800).
+- No tilt anywhere: PhotoStack = one straight framed photo, location pill top-right, mentor pill card (founder face + name)
+  over the lower-left corner; `.ph-pic`, `.f-portrait`, `.gthumb`, gallery `.pic` all straight.
+- New in Visual.jsx: `ExamTiles` (Home, under hero), `ResultsStrip` (achievers as portrait cards, moved right after the exam
+  tiles), `CallbackCard` (mid-page on Home + every course landing, reuses LeadForm), `VideoCard`/`VideoPair` (poster first,
+  video loads only on tap).
+- Course landings: "Right for you if / You may want to wait if" (`waitIf` in data/courses.js), call-back card, videos in "Where you will study".
+- Videos from the user's promo reels (`E:\Naveen things\Edits`): `public/videos/campus-tour.mp4` (6.9 MB, 480p) and
+  `mentor-talk.mp4` (3.6 MB, Sri Narasimha Murthy) + WebP posters. Also on /gallery. The third reel (Navodaya/Sainik
+  school entrance, "SINCE 2016", Oct 12 date) was NOT used: not a listed course, and it conflicts with "since 2019".
+- Open question for the user: founding year 2016 (reel) or 2019 (site)?
+
 ## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
 - /study-materials page (unlinked now) lists "official question papers" that all download the brochure, with made-up download counts: fix or remove.
