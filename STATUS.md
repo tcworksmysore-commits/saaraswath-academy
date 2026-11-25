@@ -97,7 +97,7 @@ all 4 upgrades, inner heroes text-left/photo-right, **clean sans headings** (Fra
 - Videos from the user's promo reels (`E:\Naveen things\Edits`): `public/videos/campus-tour.mp4` (6.9 MB, 480p) and
   `mentor-talk.mp4` (3.6 MB, Sri Narasimha Murthy) + WebP posters. Also on /gallery. The third reel (Navodaya/Sainik
   school entrance, "SINCE 2016", Oct 12 date) was NOT used: not a listed course, and it conflicts with "since 2019".
-- Open question for the user: founding year 2016 (reel) or 2019 (site)?
+- Founding year confirmed by the user: **2019** (the "SINCE 2016" in the Navodaya reel is not used on the site).
 
 ## Older phase 2 notes
 - Inner pages (UPSC, KAS, About, Courses, Faculty, Achievements, Gallery, Admissions) still use the older dark-hero inline-style design; restyle to site.css.
