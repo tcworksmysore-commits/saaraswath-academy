@@ -23,22 +23,32 @@ const page = (route) => {
     .replace(/(<link rel="canonical" href=")[^"]*/, `$1${esc(head.url)}`)
     .replace(/(<meta property="og:url" content=")[^"]*/, `$1${esc(head.url)}`)
     .replace(/(<meta property="og:image" content=")[^"]*/, `$1${esc(head.image)}`)
+    .replace(/(<meta name="twitter:title" content=")[^"]*/, `$1${esc(head.title)}`)
+    .replace(/(<meta name="twitter:image" content=")[^"]*/, `$1${esc(head.image)}`)
+    .replace(/(<meta property="og:type" content=")[^"]*/, `$1${esc(head.type || 'website')}`)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
   if (head.description) {
     out = out
       .replace(/(<meta name="description" content=")[^"]*/, `$1${esc(head.description)}`)
-      .replace(/(<meta property="og:description" content=")[^"]*/, `$1${esc(head.description)}`);
+      .replace(/(<meta property="og:description" content=")[^"]*/, `$1${esc(head.description)}`)
+      .replace(/(<meta name="twitter:description" content=")[^"]*/, `$1${esc(head.description)}`);
   }
+  // A noindex page (404) must not claim a canonical URL.
+  if (head.noindex) out = out.replace(/\s*<link rel="canonical"[^>]*>/, '').replace(/\s*<meta property="og:url"[^>]*>/, '');
   // Hero photo first: preload it with high priority (same srcset/sizes as <Photo>), so LCP does not wait for the JS.
   const w = (k, n) => `${base}/images/web/${k}-${n}.webp`;
+  const pre = head.preload;
   const extra = [
-    head.preload ? `<link rel="preload" as="image" href="${w(head.preload, 720)}" imagesrcset="${w(head.preload, 420)} 420w, ${w(head.preload, 720)} 720w" imagesizes="(min-width: 960px) 520px, 90vw" fetchpriority="high" />` : '',
+    pre ? `<link rel="preload" as="image" href="${w(pre.k, 720)}" imagesrcset="${w(pre.k, 420)} 420w, ${w(pre.k, 720)} 720w" imagesizes="${pre.sizes}" fetchpriority="high" />` : '',
     head.noindex ? '<meta name="robots" content="noindex" />' : '',
     ...head.ld.map(o => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`),
   ].join('\n    ');
   return { out: out.replace('</head>', `    ${extra}\n  </head>`), url: head.url };
 };
 
+// lastmod: an article's own date; the article list = its newest article; other pages = this build.
+const newest = Object.values(ARTICLE_DATES).sort().pop();
+const LASTMOD = { ...ARTICLE_DATES, '/articles': newest };
 const sitemap = [];
 for (const [route, inMap, priority] of ROUTES) {
   const { out, url } = page(route);
@@ -51,7 +61,7 @@ for (const [route, inMap, priority] of ROUTES) {
     fs.writeFileSync(path.join(dist, rel, 'index.html'), out);
     fs.writeFileSync(path.join(dist, `${rel}.html`), out);
   }
-  if (inMap) sitemap.push(`  <url><loc>${url}</loc><lastmod>${ARTICLE_DATES[route] || today}</lastmod><priority>${priority}</priority></url>`);
+  if (inMap) sitemap.push(`  <url><loc>${url}</loc><lastmod>${LASTMOD[route] || today}</lastmod><priority>${priority}</priority></url>`);
 }
 
 // 404 page for unknown paths: the NotFound route, noindex.

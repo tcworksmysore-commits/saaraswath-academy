@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { openEnquiry } from './Enquire';
 import { BrandIcon } from './Brand';
 import { Photo } from './Visual';
+import { headStore } from './SEO';
 import { getWhatsAppLink } from '../../utils/constants';
 
 // Small building blocks shared by the inner pages (styles in styles/site.css).
@@ -18,7 +19,14 @@ export const Crumbs = ({ items }) => (
 );
 
 // photo: one of PHOTOS from Visual.jsx; shown as a straight framed card beside the title.
-export const PageHero = ({ title, text, crumbs, kn, photo, children }) => (
+const HERO_SIZES = '(min-width: 900px) 440px, 80vw';
+
+export const PageHero = ({ title, text, crumbs, kn, photo, children }) => {
+  // Static pre-render: the hero photo is the LCP image, so ask prerender.mjs to preload it (SEO renders first, so headStore is set).
+  if (typeof window === 'undefined' && photo && headStore.current && !headStore.current.preload) {
+    headStore.current.preload = { k: photo.k, sizes: HERO_SIZES };
+  }
+  return (
   <section className={`page-hero${photo ? ' ph-photo' : ''}`}>
     <span className="blob b1" aria-hidden="true" /><span className="blob b2" aria-hidden="true" />
     <div className="wrap">
@@ -30,10 +38,11 @@ export const PageHero = ({ title, text, crumbs, kn, photo, children }) => (
         {text && <p>{text}</p>}
         {children}
       </div>
-      {photo && <figure className="frame ph-pic rise d1"><Photo p={photo} eager sizes="(min-width: 900px) 440px, 80vw" /></figure>}
+      {photo && <figure className="frame ph-pic rise d1"><Photo p={photo} eager sizes={HERO_SIZES} /></figure>}
     </div>
   </section>
-);
+  );
+};
 
 export const SecHead = ({ tag, title, text }) => (
   <div className="sh">
